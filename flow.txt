@@ -1,0 +1,39 @@
+
+
+**************************Frontend ****************************
+
+
+src/
+│
+├── components/
+│   ├── Button.jsx
+│   ├── Header.jsx
+│   └── Loader.jsx
+│
+├── pages/
+│   ├── HomePage.jsx
+│   ├── SignupPage.jsx
+│   └── ProfilePage.jsx
+│
+├── hooks/
+│   ├── useAuth.js
+│   └── useFetch.js
+│
+├── utils/
+│   ├── api.js
+│   └── helpers.js
+│
+├── styles/
+│   ├── signup.css
+│   └── home.css
+│
+├── routes/
+│   └── AppRoutes.jsx
+│
+├── context/
+│   └── AuthContext.js
+│
+├── services/
+│   └── authService.js
+│
+└── index.js

@@ -1,0 +1,114 @@
+/* Styling for the top bar */
+/* Styling for the fixed top bar */
+.Bar {
+    position: fixed; /* Fixed positioning to keep it at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px; /* Define the height of the bar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: #F8BB5F;
+    z-index: 100; /* Ensure it's above other content */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fa;
+    margin: 0;
+    /* Remove default margin */
+    padding: 0;
+    /* Remove default padding */
+    display: flex;
+    flex-direction: column;
+    /* Ensure vertical stacking */
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    /* Full viewport height */
+}
+
+/* Container for the form to center it */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    /* Max width to prevent it from stretching too much */
+}
+
+/* Form styling */
+form {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Input field styling */
+input[type="email"],
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Input focus styling */
+input[type="email"]:focus,
+input[type="text"]:focus {
+    border-color: #0056b3;
+    outline: none;
+}
+
+/* Submit button styling */
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Error and success message styling */
+.error,
+.success {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: blue;
+}
+
+/* Heading styling */
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
