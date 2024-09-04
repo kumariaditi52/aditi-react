@@ -1,6 +1,5 @@
 import User from "../models/User.models.js";
 import nodemailer from "nodemailer";
-import mongoose from "mongoose";
 import jwt from 'jsonwebtoken';
 import dotenv from "dotenv";
 
@@ -15,8 +14,8 @@ const transporter = nodemailer.createTransport({
 })
 
 export const signupHandler = async (req, res) => {
-    const { email } = req.body;
-    const otp = Math.floor(1000 + Math.random() * 9000);
+    const { email, username } = req.body;
+    const otp = Math.floor(1000 + Math.random() * 9000).toString();
 
     try {
         const existingUser = await User.findOne({ email });
@@ -25,15 +24,15 @@ export const signupHandler = async (req, res) => {
             return res.status(400).json({ message: "User already existed" });
         }
 
-        const newUser = new User({ email, otp });
+        const newUser = new User({ email, otp, username });
         await newUser.save();
 
         // Send OTP via email
         const mailOptions = {
             from: "free.usage.for.code@gmail.com",
             to: email,
-            subject: "Thanks for Signing up. Here is your OTP code",
-            text: `The OTP code is ${otp}`
+            subject: "Thanks for Signing up in Fruitzz...    Here is your OTP code",
+            text: `Hey ${username} welcome to the Fruitzz... , Your OTP for verification code is ${otp}`
         };
 
         await transporter.sendMail(mailOptions);
@@ -45,7 +44,7 @@ export const signupHandler = async (req, res) => {
 };
 
 export const verifyOtpHandler = async (req, res) => {
-    const { email, otp } = req.body;
+    const { email, otp, username } = req.body;
 
     try {
         const user = await User.findOne({ email });
@@ -54,15 +53,21 @@ export const verifyOtpHandler = async (req, res) => {
             return res.status(400).json({ message: "User not found" });
         }
 
+        console.log("User found:", user); // Add this log to check the user data
+
         if (user.otp === otp) {
             user.isVerified = true;
             user.otp = null; // Clear OTP
-            const token = jwt.sign({ // Generating the JWT token
-                email: user.email, isVerified: true, userId: user._id
+            const token = jwt.sign({
+                email: user.email,
+                isVerified: true,
+                userId: user._id
             }, process.env.JWT_SECRET);
 
             user.token = token;
             await user.save();
+
+            console.log("Token generated:", token); // Add this log to check token generation
 
             return res.status(200).json({ message: "OTP verified successfully", token });
         } else {

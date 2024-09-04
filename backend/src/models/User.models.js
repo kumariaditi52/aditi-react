@@ -7,6 +7,11 @@ const UserSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
+    username: {
+        type: String,
+        required: true,
+    }
+    ,
     otp: {
         type: String,
     },

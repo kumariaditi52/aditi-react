@@ -1,17 +1,16 @@
 import axios from "axios";
-// import { Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 
 
 //       ***************** signup handler ****************
 
-export const handleSubmit = async (e, email, setLoading, setOtpSent) => {
+export const handleSubmit = async (e, email, username, setLoading, setOtpSent) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-        const response = await axios.post("/api/signup", { email });
+        const response = await axios.post("/api/signup", { email, username });
         console.log(response.data);
         toast.success(response.data.message || "Successfully Registered");
         setOtpSent(true);
@@ -36,20 +35,15 @@ export const handleOtpSubmit = async (e, email, otp, setOtpSent, setLoading, nav
             localStorage.setItem('authToken', token);
             setOtpSent(false);
             setTimeout(() => {
-                navigate("/");
-            }, 1000)
+                navigate("/"); // Ensure this route is correct
+            }, 1000); // Adjust timeout if necessary
         }
 
         toast.success(response.data.message || "User Verified Successfully");
     } catch (error) {
-        console.error("OTP verification error:", error.response?.data);
+        console.error("OTP verification error:", error.response?.data); // Log the error details
         toast.error(error.response?.data?.message || "Invalid OTP");
     } finally {
         setLoading(false);
     }
 };
-
-
-
-//             ********************* cart handler ****************************
-
