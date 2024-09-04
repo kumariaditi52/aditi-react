@@ -1,14 +1,15 @@
 import "../css/navbar.css";
-import { useState, useEffect } from "react";
-import { Link, useNavigate,useLocation } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 
 
 function Navbar() {
     const [isDropdown, setDropdown] = useState(false);
-    const navigate = useNavigate(); // Initialize navigate
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [cartCount, setCartCount] = useState(0);
+    const dropdownRef = useRef(null); // Reference for dropdown
+    const navigate = useNavigate(); // Initialize navigate
 
 
     const parseJwt = (token) => {
@@ -25,13 +26,11 @@ function Navbar() {
             const token = localStorage.getItem("authToken");
             if (token) {
                 setIsAuthenticated(true);
-
                 const payload = parseJwt(token);
                 if (!payload || !payload.userId) {
                     console.error("Invalid token payload");
                     return;
                 }
-
                 const userId = payload.userId;
                 try {
                     const response = await axios.get(`/api/showCartCount?userId=${userId}`, {
@@ -45,9 +44,25 @@ function Navbar() {
                 }
             }
         };
-
         fetchCartCount(); // Call the function to fetch cart count
     }, []); // Empty dependency array to ensure this runs only once on mount
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setDropdown(false);
+            }
+        };
+
+        // Attach the event listener
+        document.addEventListener('mousedown', handleClickOutside);
+
+        // Cleanup the event listener on component unmount
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
 
 
     const toggleDropdown = () => {
@@ -91,11 +106,9 @@ function Navbar() {
                         )}
                         <i className="fa-solid fa-cart-shopping" color="#68736c"></i>
                     </Link>
-
                 </div>
-
                 {!isCartPage && (
-                    <div className="dropdown">
+                    <div className="dropdown" ref={dropdownRef}>
                         <button onClick={toggleDropdown} className="dropdown-button">
                             <i className="fa-regular fa-circle-user"></i>
                         </button>
@@ -103,21 +116,31 @@ function Navbar() {
                             <ul>
                                 {isAuthenticated ? (
                                     <>
-                                    <li>
-                                        <a onClick={handleLogout} style={{ cursor: 'pointer', color: 'blue' }}>
-                                            Log out
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a style={{ cursor: 'pointer', color: 'blue' }}>
-                                            Log out
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a style={{ cursor: 'pointer', color: 'blue' }}>
-                                            Log out
-                                        </a>
-                                    </li>
+                                        <li>
+                                            <a onClick={handleLogout} className="dropdown-item">
+                                                <span className="dropdown-text">Log out</span> <i className="fa-solid fa-right-from-bracket"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a className="dropdown-item">
+                                                <span className="dropdown-text">Profile</span><i className="fa-regular fa-user"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a className="dropdown-item">
+                                                <span className="dropdown-text">Cart</span><i className="fa-solid fa-cart-shopping"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a className="dropdown-item">
+                                                <span className="dropdown-text">My Orders</span><i className="fa-solid fa-sort"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a className="dropdown-item">
+                                                <span className="dropdown-text">Privacy & policy</span><i className="fa-solid fa-shield-halved"></i>
+                                            </a>
+                                        </li>
                                     </>
                                 ) : (
                                     <li>

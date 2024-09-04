@@ -65,10 +65,10 @@
     font-size: 1.5rem;
 }
 
-.dropdown-button i {
+ .dropdown-button i {
     font-size: 1.5rem;
 }
-
+/*
 .dropdown-button {
     font-size: 2rem;
     background: transparent;
@@ -119,7 +119,7 @@
 .dropdown:hover .dropdown-menu {
     opacity: 1;
     visibility: visible;
-}
+} */
 
 /* Navbar Cart Icon and Count Styles */
 .cart {
@@ -153,4 +153,64 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+/* Dropdown.css */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px; /* Adjust size as needed */
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%; /* Position below the button */
+    height: auto;
+    right: 0;
+    width: 16rem; /* Adjust width as needed */
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(234, 142, 142, 0.1);
+    padding: 10px;
+    border-radius: 4px;
+    display: none; /* Hidden by default */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.dropdown-menu.show {
+    background: #ffd9ae;
+    border-radius: 1rem;
+    top: 4rem;
+    display: block;
+    opacity: 1;
+}
+
+.dropdown-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-item {
+    margin-left: 20px;
+    padding: 10px;
+    color: white;
+    border-radius: 1rem;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.dropdown-item:hover {
+    background-color: #fae2ef;
+}
+.dropdown-text{
+    margin-right: 12px;
 }
