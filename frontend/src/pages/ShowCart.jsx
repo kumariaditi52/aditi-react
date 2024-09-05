@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import "../css/showcart.css";
 import { refreshPage } from "../components/reloadPage";
@@ -119,7 +118,7 @@ export default function ShowCart() {
             // Display the toast notification with the fruit name
             toast.success(`${updatedItem.fruitId.name} ${action === 'increment' ? 'added to' : 'removed from'} the Cart`);
         } else {
-            console.error("Updated item not found");
+            // console.error("Updated item not found");
         }
 
     } catch (error) {

@@ -47,3 +47,8 @@ export const handleOtpSubmit = async (e, email, otp, setOtpSent, setLoading, nav
         setLoading(false);
     }
 };
+
+
+export const handleSignIn=async()=>{
+    console.log("sign in")
+}

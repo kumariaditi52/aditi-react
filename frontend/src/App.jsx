@@ -4,7 +4,6 @@ import SignupForm from "./pages/Signup.jsx";
 import ShowCart from "./pages/ShowCart.jsx";
 import BuyPage from "./pages/BuyPage.jsx";
 
-
 function App() {
   return (
     <Router>
@@ -13,7 +12,7 @@ function App() {
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/cart" element={<ShowCart />} />
         <Route path="/buy" element={<BuyPage />} />
-        
+        <Route path="/userprofile" element={<handleProfile />}/>
       </Routes>
     </Router>
 

@@ -2,6 +2,8 @@ import "../css/navbar.css";
 import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
+import Profile from "../pages/Profile";
+import { refreshPage } from "./reloadPage";
 
 
 function Navbar() {
@@ -39,7 +41,7 @@ function Navbar() {
                         },
                     });
                     setCartCount(response.data.totalItemCount);
-                } catch (error) {
+                } catch (error) {1
                     console.error("Error fetching cart count: ", error);
                 }
             }
@@ -76,7 +78,7 @@ function Navbar() {
     const handleLogout = () => {
         localStorage.removeItem('authToken');
         setIsAuthenticated(false);
-        navigate("/");   // navigate to the home page
+        refreshPage();   // navigate to the home page
     }
 
     const location = useLocation();
@@ -99,6 +101,7 @@ function Navbar() {
 
             {/* cart icon is here */}
             <div className="navbar-icons">
+                <div className="seller"><i className="fa-solid fa-shop"></i>Become Seller</div>
                 <div className="cart">
                     <Link to="/cart" className="cart-link">
                         {cartCount > -1 && (
@@ -122,7 +125,7 @@ function Navbar() {
                                             </a>
                                         </li>
                                         <li>
-                                            <a className="dropdown-item">
+                                            <a className="dropdown-item" onClick={Profile}>
                                                 <span className="dropdown-text">Profile</span><i className="fa-regular fa-user"></i>
                                             </a>
                                         </li>
@@ -143,11 +146,20 @@ function Navbar() {
                                         </li>
                                     </>
                                 ) : (
+                                    <>
+                                    <div className="dropdown" ref={dropdownRef}>
                                     <li>
-                                        <a onClick={handleSignup} style={{ cursor: 'pointer' }}>
+                                        <a onClick={handleSignup} className="dropdown-item" style={{ cursor: 'pointer' }}>
                                             Sign Up
                                         </a>
                                     </li>
+                                    <li>
+                                        <a  className="dropdown-item" style={{ cursor: 'pointer' }}>
+                                            Sign In
+                                        </a>
+                                    </li>
+                                    </div>
+                                    </>
                                 )}
                             </ul>
                         </div>

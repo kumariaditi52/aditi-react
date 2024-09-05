@@ -6,7 +6,8 @@
     height: 60px;
     display: flex;
     align-items: center;
-    justify-content: center; /* Center content */
+    justify-content: center;
+    /* Center content */
     padding: 10px 20px;
     background-color: #F8BB5F;
     z-index: 100;
@@ -15,7 +16,8 @@
 
 .navbar-logo {
     position: absolute;
-    left: 20px; /* Keep the logo on the left */
+    left: 20px;
+    /* Keep the logo on the left */
     display: flex;
     align-items: center;
 }
@@ -48,7 +50,8 @@
 
 .navbar-icons {
     position: absolute;
-    right: 50px; /* Keep the icons on the right */
+    right: 50px;
+    /* Keep the icons on the right */
     display: flex;
     align-items: center;
     gap: 40px;
@@ -65,9 +68,10 @@
     font-size: 1.5rem;
 }
 
- .dropdown-button i {
+.dropdown-button i {
     font-size: 1.5rem;
 }
+
 /*
 .dropdown-button {
     font-size: 2rem;
@@ -122,6 +126,15 @@
 } */
 
 /* Navbar Cart Icon and Count Styles */
+
+.seller {
+    color: grey;
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: 500;
+    text-decoration: none;
+}
+
 .cart {
     position: relative;
     display: flex;
@@ -135,25 +148,32 @@
 }
 
 .cart-link i {
-    font-size: 24px; /* Adjust as needed */
+    font-size: 24px;
+    /* Adjust as needed */
     color: #68736c;
 }
 
 /* Styling for the cart count bubble */
 .add-value-cart {
     position: absolute;
-    top: -10px; /* Adjust based on the icon size */
-    right: -10px; /* Adjust based on the icon size */
-    background-color: #ff5722; /* Adjust color to match theme */
+    top: -10px;
+    /* Adjust based on the icon size */
+    right: -10px;
+    /* Adjust based on the icon size */
+    background-color: #ff5722;
+    /* Adjust color to match theme */
     color: white;
     border-radius: 50%;
-    padding: 2px 8px; /* Adjust size as needed */
-    font-size: 14px; /* Adjust font size */
+    padding: 2px 8px;
+    /* Adjust size as needed */
+    font-size: 14px;
+    /* Adjust font size */
     font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 /* Dropdown.css */
 .dropdown {
     position: relative;
@@ -164,27 +184,31 @@
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 24px; /* Adjust size as needed */
+    font-size: 24px;
+    /* Adjust size as needed */
 }
 
 .dropdown-menu {
     position: absolute;
-    top: 100%; /* Position below the button */
+    top: 100%;
+    /* Position below the button */
     height: auto;
     right: 0;
-    width: 16rem; /* Adjust width as needed */
+    width: 16rem;
+    /* Adjust width as needed */
     background-color: white;
     box-shadow: 0 4px 8px rgba(234, 142, 142, 0.1);
     padding: 10px;
     border-radius: 4px;
-    display: none; /* Hidden by default */
+    display: none;
+    /* Hidden by default */
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 1000;
 }
 
 .dropdown-menu.show {
-    background: #ffd9ae;
+    background: grey;
     border-radius: 1rem;
     top: 4rem;
     display: block;
@@ -209,8 +233,9 @@
 }
 
 .dropdown-item:hover {
-    background-color: #fae2ef;
+    background-color: #4c5f62;
 }
-.dropdown-text{
+
+.dropdown-text {
     margin-right: 12px;
 }
