@@ -39,8 +39,6 @@ const Body = () => {
         delaySpeed: 2000,
     });
 
-    // console.log("Placeholder text:", text);
-
     return (
         <>
             <div className="body-container">

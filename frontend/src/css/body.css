@@ -140,6 +140,7 @@
     margin-top: -35rem;
     margin-bottom: 10px;
     position: relative;
+    padding-left: 10px;
 }
 
 .search-bar::after {
