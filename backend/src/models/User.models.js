@@ -12,7 +12,7 @@ const UserSchema = new mongoose.Schema({
         required: true,
     },
     phone: {
-        type: Number,
+        type: String,
     },
     address: {
         type: String,
@@ -24,7 +24,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
     },
     pincode: {
-        type: Number,
+        type: String,
     },
     otp: {
         type: String,
@@ -39,7 +39,8 @@ const UserSchema = new mongoose.Schema({
     token: {
         type: String,
     },
-});
+}, { timestamps: true });
 
 const User = mongoose.model("User", UserSchema)
 export default User;
+
