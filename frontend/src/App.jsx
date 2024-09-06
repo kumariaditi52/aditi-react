@@ -3,6 +3,7 @@ import Home from "./pages/HomePage.jsx";
 import SignupForm from "./pages/Signup.jsx";
 import ShowCart from "./pages/ShowCart.jsx";
 import BuyPage from "./pages/BuyPage.jsx";
+import Profile from "./pages/Profile.jsx";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/cart" element={<ShowCart />} />
         <Route path="/buy" element={<BuyPage />} />
-        <Route path="/userprofile" element={<handleProfile />}/>
+        <Route path="/userprofile" element={<Profile />}/>
       </Routes>
     </Router>
 

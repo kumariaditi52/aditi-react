@@ -41,7 +41,8 @@ function Navbar() {
                         },
                     });
                     setCartCount(response.data.totalItemCount);
-                } catch (error) {1
+                } catch (error) {
+                    1
                     console.error("Error fetching cart count: ", error);
                 }
             }
@@ -66,7 +67,6 @@ function Navbar() {
     }, []);
 
 
-
     const toggleDropdown = () => {
         setDropdown((prevDropdown) => !prevDropdown);
     }
@@ -79,6 +79,10 @@ function Navbar() {
         localStorage.removeItem('authToken');
         setIsAuthenticated(false);
         refreshPage();   // navigate to the home page
+    }
+
+    const handleProfile = () => {
+        navigate("/userprofile");
     }
 
     const location = useLocation();
@@ -125,7 +129,7 @@ function Navbar() {
                                             </a>
                                         </li>
                                         <li>
-                                            <a className="dropdown-item" onClick={Profile}>
+                                            <a className="dropdown-item" onClick={handleProfile}>
                                                 <span className="dropdown-text">Profile</span><i className="fa-regular fa-user"></i>
                                             </a>
                                         </li>
@@ -147,18 +151,18 @@ function Navbar() {
                                     </>
                                 ) : (
                                     <>
-                                    <div className="dropdown" ref={dropdownRef}>
-                                    <li>
-                                        <a onClick={handleSignup} className="dropdown-item" style={{ cursor: 'pointer' }}>
-                                            Sign Up
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a  className="dropdown-item" style={{ cursor: 'pointer' }}>
-                                            Sign In
-                                        </a>
-                                    </li>
-                                    </div>
+                                        <div className="dropdown" ref={dropdownRef}>
+                                            <li>
+                                                <a onClick={handleSignup} className="dropdown-item" style={{ cursor: 'pointer' }}>
+                                                    Sign Up
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a onClick={handleSignup} className="dropdown-item" style={{ cursor: 'pointer' }}>
+                                                    Sign In
+                                                </a>
+                                            </li>
+                                        </div>
                                     </>
                                 )}
                             </ul>

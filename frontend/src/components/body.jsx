@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import handleAddToCart from "../utils/cartUtils.js";
 import { refreshPage } from "../components/reloadPage";
-import { useTypewriter, Cursor } from "react-simple-typewriter";
+import { useTypewriter } from "react-simple-typewriter";
 
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
