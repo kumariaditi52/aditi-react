@@ -2,7 +2,7 @@ import "../css/navbar.css";
 import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
-import Profile from "../pages/Profile";
+// import Profile from "../pages/Profile";
 import { refreshPage } from "./reloadPage";
 
 
@@ -134,9 +134,9 @@ function Navbar() {
                                             </a>
                                         </li>
                                         <li>
-                                            <a className="dropdown-item">
-                                                <span className="dropdown-text">Cart</span><i className="fa-solid fa-cart-shopping"></i>
-                                            </a>
+                                            {/* <a className="dropdown-item"> */}
+                                                <Link to={'/cart'} className="dropdown-item"> <span className="dropdown-text">Cart</span><i className="fa-solid fa-cart-shopping"></i></Link>
+                                            {/* </a> */}
                                         </li>
                                         <li>
                                             <a className="dropdown-item">

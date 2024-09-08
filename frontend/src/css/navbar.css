@@ -239,3 +239,7 @@
 .dropdown-text {
     margin-right: 12px;
 }
+.dropdown-cart{
+    text-decoration: none;
+    color: white;
+}
