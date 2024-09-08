@@ -1,16 +1,19 @@
 
 
-**************************Frontend ****************************
 
+*********************** Frontend *********************
 
 src/
-│
 ├── components/
 │   ├── Button.jsx
 │   ├── Header.jsx
 │   └── Loader.jsx
 │
 ├── pages/
+│   ├── admin/
+│   │   ├── AdminDashboard.jsx
+│   │   ├── ManageProducts.jsx
+│   │   └── AdminLogin.jsx  // optional: if you need a separate login for admin
 │   ├── HomePage.jsx
 │   ├── SignupPage.jsx
 │   └── ProfilePage.jsx
@@ -25,10 +28,12 @@ src/
 │
 ├── styles/
 │   ├── signup.css
-│   └── home.css
+│   ├── home.css
+│   └── admin.css // new file for admin styles
 │
 ├── routes/
-│   └── AppRoutes.jsx
+│   ├── AppRoutes.jsx
+│   └── AdminRoutes.jsx // new file for admin routes
 │
 ├── context/
 │   └── AuthContext.js

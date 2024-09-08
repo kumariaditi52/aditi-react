@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../css/carousel.css";
 
 const images = [
@@ -18,6 +18,14 @@ function Carousel() {
     const prevSlide = () => {
         setCurrent(current === 0 ? images.length - 1 : current - 1);
     };
+    useEffect(() => {
+        const autoSlide = setInterval(() => {
+            nextSlide();
+        }, 1000); // Slide every 1 second
+
+        // Cleanup interval on component unmount
+        return () => clearInterval(autoSlide);
+    }, [current]); // Dependency array includes `current` to reset the interval on each slide change
 
     return (
         <>
