@@ -4,6 +4,7 @@ import SignupForm from "./pages/Signup.jsx";
 import ShowCart from "./pages/ShowCart.jsx";
 import BuyPage from "./pages/BuyPage.jsx";
 import Profile from "./pages/Profile.jsx";
+import { AdminLogin } from "./pages/admin/AdminLogin.jsx";
 
 function App() {
   return (
@@ -13,7 +14,12 @@ function App() {
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/cart" element={<ShowCart />} />
         <Route path="/buy" element={<BuyPage />} />
-        <Route path="/userprofile" element={<Profile />}/>
+        <Route path="/userprofile" element={<Profile />} />
+
+
+        {/* admin routes starts here */}
+        <Route path="/*admin" element={<AdminLogin />} />
+        {/* <Route path="/admin" element={<AdminDashBoard />} /> */}
       </Routes>
     </Router>
 

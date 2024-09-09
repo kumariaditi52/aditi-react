@@ -3,11 +3,13 @@ import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
 import "../css/profile.css";
+// import states from "../../public/states-and-districts.json";
 
 function Profile() {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
+  // const [states, setStates] = useState([]);
 
   const [userInfo, setUserInfo] = useState({
     username: '',
@@ -50,8 +52,27 @@ function Profile() {
         }
       }
     }
+
+    // const fetchStates = async () => {
+    //   try {
+    //     const response = await axios.get('/api/states'); // Fetch the list of states from your backend
+    //     setStates(response.data); // Assuming the API returns an array of states
+    //   } catch (error) {
+    //     console.error("Error fetching states", error);
+    //   }
+    // };
     fetchUserData();
+    // fetchStates(); // Fetch states when the component mounts
   }, [])
+
+  // const handleStateChange = (e) => {
+  //   const selectedState = e.target.value;
+  //   setUserInfo({ ...userInfo, state: selectedState });
+
+  //   // No need to set districts if you're not using them
+  // };
+
+
 
   const saveChanges = async (userInfo) => {
     const token = localStorage.getItem("authToken");
@@ -66,18 +87,18 @@ function Profile() {
           },
         }
       );
-  
+
       // Fetch updated user info
       const response = await axios.get(`/api/userProfile?userId=${userId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-  
+
       // Update state with the new user info
       setUserInfo(response.data);
       setIsEditMode(false); // Optionally, exit edit mode
-  
+
       // Show success message
       toast.success("Profile updated successfully");
     } catch (error) {
@@ -86,7 +107,7 @@ function Profile() {
       console.error("Error saving profile changes", error);
     }
   };
-  
+
 
 
   const toggleEditMode = () => {
@@ -102,7 +123,7 @@ function Profile() {
         <div className="navbar">
         </div>
         <div className="profile-header">
-        <ToastContainer />
+          <ToastContainer />
           <h1>Profile Settings</h1><hr />
         </div>
         <button onClick={toggleEditMode}>
@@ -150,6 +171,14 @@ function Profile() {
                 <tr><td><b> State :</b></td>
                   <td>{isEditMode ? (
                     <input type="text" value={userInfo.state || ""} onChange={(e) => setUserInfo({ ...userInfo, state: e.target.value })} />
+                    // <select value={userInfo.state} onChange={handleStateChange}>
+                    //   <option value="">Select State</option>
+                    //   {states.states.map((state, index) => (
+                    //     <option key={index} value={state.name}>
+                    //       {state.name}
+                    //     </option>
+                    //   ))}
+                    // </select>
                   ) : (
                     userInfo.state
                   )}</td>
