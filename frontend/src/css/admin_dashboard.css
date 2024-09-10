@@ -1,0 +1,56 @@
+/* admin_dashboard.css */
+
+/* Container for the entire dashboard */
+.dashboard-body-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar {
+    height: 100%;
+    width: 300px;
+    background-color: #2f4050;
+}
+
+.sidebar-list {
+    height: auto;
+    padding: 0;
+    width: 100%;
+}
+
+.sidebar-list .sidebar-row {
+    height: 60px;
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    color: grey;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+.sidebar-row:hover {
+    cursor: pointer;
+    background-color: #293846;
+    color: white;
+}
+
+#active {
+    background-color: #293846;
+    color: white;
+}
+
+.sidebar-row #sidebar-icon {
+    flex: 30%;
+    display: grid;
+    place-items: center;
+}
+
+.sidebar-row #sidebar-title {
+    flex: 70%;
+}

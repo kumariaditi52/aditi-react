@@ -5,6 +5,7 @@ import ShowCart from "./pages/ShowCart.jsx";
 import BuyPage from "./pages/BuyPage.jsx";
 import Profile from "./pages/Profile.jsx";
 import AdminLogin from "./pages/admin/AdminLogin.jsx";
+import AdminDashBoard from "./pages/admin/AdminDashboard.jsx";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
 
         {/* admin routes starts here */}
         <Route path="/*admin" element={<AdminLogin />} />
-        {/* <Route path="/admin" element={<AdminDashBoard />} /> */}
+        <Route path="/adminDashboard" element={<AdminDashBoard />} />
       </Routes>
     </Router>
 

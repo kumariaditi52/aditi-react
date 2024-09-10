@@ -14,7 +14,8 @@ import showCartCountRoutes from "./src/routes/showCartCountRoutes.js";
 import quantityChangethroughButton from "./src/routes/quantityChangethroughButton.js";
 import userProfileRoutes from "./src/routes/userProfileRoutes.js";
 
-import adminRoutes from "./src/routes/adminRoutes/adminSignRoutes.js";
+import adminSignRoutes from "./src/routes/adminRoutes/adminSignRoutes.js";
+import adminLoginRoutes from "./src/routes/adminRoutes/adminLoginRoutes.js"
 
 const app = express(); // initializing
 const PORT = process.env.PORT || 3000;
@@ -40,7 +41,8 @@ app.use("/api", userProfileRoutes);
 
 
 //admin routes
-app.use("/api", adminRoutes);
+app.use("/api", adminSignRoutes);
+app.use("/api", adminLoginRoutes);
 
 app.listen(PORT, () => {
     console.log(`App is listening on http://localhost:${PORT}`);
