@@ -72,59 +72,6 @@
     font-size: 1.5rem;
 }
 
-/*
-.dropdown-button {
-    font-size: 2rem;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    color: chocolate;
-}
-
-.dropdown-menu {
-    position: absolute;
-    right: 30px;
-    top: 100%;
-    width: 200px;
-    background: #ffffff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    z-index: 10;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s ease, visibility 0.2s ease;
-}
-
-.dropdown-menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.dropdown-menu li {
-    border-bottom: 1px solid #dddddd;
-}
-
-.dropdown-menu li:last-child {
-    border-bottom: none;
-}
-
-.dropdown-menu a {
-    display: block;
-    padding: 12px 16px;
-    color: #333333;
-    text-decoration: none;
-}
-
-.dropdown-menu a:hover {
-    background-color: #f0f0f0;
-}
-
-.dropdown:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-} */
-
 /* Navbar Cart Icon and Count Styles */
 
 .seller {
@@ -239,7 +186,8 @@
 .dropdown-text {
     margin-right: 12px;
 }
-.dropdown-cart{
+
+.dropdown-cart {
     text-decoration: none;
     color: white;
 }

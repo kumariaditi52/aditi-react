@@ -4,7 +4,7 @@ import SignupForm from "./pages/Signup.jsx";
 import ShowCart from "./pages/ShowCart.jsx";
 import BuyPage from "./pages/BuyPage.jsx";
 import Profile from "./pages/Profile.jsx";
-import { AdminLogin } from "./pages/admin/AdminLogin.jsx";
+import AdminLogin from "./pages/admin/AdminLogin.jsx";
 
 function App() {
   return (

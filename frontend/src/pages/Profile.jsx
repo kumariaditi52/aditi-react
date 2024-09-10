@@ -126,51 +126,51 @@ function Profile() {
           <ToastContainer />
           <h1>Profile Settings</h1><hr />
         </div>
-        <button onClick={toggleEditMode}>
+        <button className="edit-btn-profile" onClick={toggleEditMode}>
           {isEditMode ? 'Save' : 'Edit'}
         </button>
         {isAuthenticated ? (
           <>
-            <table>
+            <table className="profile-table">
               <tbody>
-                <tr><td><b>UserName :</b></td>
-                  <td>{isEditMode ? (
-                    <input type="text" value={userInfo.username} onChange={(e) => setUserInfo({ ...userInfo, username: e.target.value })} />
+                <tr><td className="profile-td"><b>UserName :</b></td>
+                  <td className="profile-td">{isEditMode ? (
+                    <input className="profile-input"type="text" value={userInfo.username} onChange={(e) => setUserInfo({ ...userInfo, username: e.target.value })} />
                   ) : (
                     userInfo.username
                   )}</td>
                 </tr>
-                <tr><td><b>Email :</b></td>
-                  <td>{isEditMode ? (
-                    <input type="email" value={userInfo.email} onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value })} />
+                <tr><td className="profile-td"><b className="profile-b">Email :</b></td>
+                  <td className="profile-td">{isEditMode ? (
+                    <input className="profile-input"type="email" value={userInfo.email} onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value })} />
                   ) : (
                     userInfo.email
                   )}</td>
                 </tr>
-                <tr><td><b>Phone No :</b></td>
-                  <td>{isEditMode ? (
-                    <input type="text" value={userInfo.phone || ""} onChange={(e) => setUserInfo({ ...userInfo, phone: e.target.value })} pattern="\d{10}" title="Phone number should be 10 digits" maxLength="10" placeholder="Enter 10-digit phone number" />
+                <tr><td className="profile-td"><b>Phone No :</b></td>
+                  <td className="profile-td">{isEditMode ? (
+                    <input className="profile-input"type="text" value={userInfo.phone || ""} onChange={(e) => setUserInfo({ ...userInfo, phone: e.target.value })} pattern="\d{10}" title="Phone number should be 10 digits" maxLength="10" placeholder="Enter 10-digit phone number" />
                   ) : (
                     userInfo.phone
                   )}</td>
                 </tr>
-                <tr><td><b>Address :</b></td>
-                  <td>{isEditMode ? (
-                    <input type="text" value={userInfo.address || ""} onChange={(e) => setUserInfo({ ...userInfo, address: e.target.value })} />
+                <tr><td className="profile-td"><b>Address :</b></td>
+                  <td className="profile-td">{isEditMode ? (
+                    <input className="profile-input"type="text" value={userInfo.address || ""} onChange={(e) => setUserInfo({ ...userInfo, address: e.target.value })} />
                   ) : (
                     userInfo.address
                   )}</td>
                 </tr>
-                <tr><td><b> City :</b></td>
-                  <td>{isEditMode ? (
-                    <input type="text" value={userInfo.city || ""} onChange={(e) => setUserInfo({ ...userInfo, city: e.target.value })} />
+                <tr><td className="profile-td"><b> City :</b></td>
+                  <td className="profile-td">{isEditMode ? (
+                    <input className="profile-input"type="text" value={userInfo.city || ""} onChange={(e) => setUserInfo({ ...userInfo, city: e.target.value })} />
                   ) : (
                     userInfo.city
                   )}</td>
                 </tr>
-                <tr><td><b> State :</b></td>
-                  <td>{isEditMode ? (
-                    <input type="text" value={userInfo.state || ""} onChange={(e) => setUserInfo({ ...userInfo, state: e.target.value })} />
+                <tr><td className="profile-td"><b> State :</b></td>
+                  <td className="profile-td">{isEditMode ? (
+                    <input className="profile-input"type="text" value={userInfo.state || ""} onChange={(e) => setUserInfo({ ...userInfo, state: e.target.value })} />
                     // <select value={userInfo.state} onChange={handleStateChange}>
                     //   <option value="">Select State</option>
                     //   {states.states.map((state, index) => (
@@ -183,9 +183,9 @@ function Profile() {
                     userInfo.state
                   )}</td>
                 </tr>
-                <tr><td><b> PIN Code :</b></td>
-                  <td>{isEditMode ? (
-                    <input type="Number" value={userInfo.pincode || ""} onChange={(e) => setUserInfo({ ...userInfo, pincode: e.target.value })} />
+                <tr><td className="profile-td"><b> PIN Code :</b></td>
+                  <td className="profile-td">{isEditMode ? (
+                    <input className="profile-input"type="Number" value={userInfo.pincode || ""} onChange={(e) => setUserInfo({ ...userInfo, pincode: e.target.value })} />
                   ) : (
                     userInfo.pincode
                   )}</td>

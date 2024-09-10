@@ -14,6 +14,8 @@ import showCartCountRoutes from "./src/routes/showCartCountRoutes.js";
 import quantityChangethroughButton from "./src/routes/quantityChangethroughButton.js";
 import userProfileRoutes from "./src/routes/userProfileRoutes.js";
 
+import adminRoutes from "./src/routes/adminRoutes/adminSignRoutes.js";
+
 const app = express(); // initializing
 const PORT = process.env.PORT || 3000;
 
@@ -35,6 +37,10 @@ app.use("/api", deleteItemRoutes); //  delete cart items from cart
 app.use("/api", showCartCountRoutes); //  show total count in cart
 app.use("/api", quantityChangethroughButton);
 app.use("/api", userProfileRoutes);
+
+
+//admin routes
+app.use("/api", adminRoutes);
 
 app.listen(PORT, () => {
     console.log(`App is listening on http://localhost:${PORT}`);

@@ -186,3 +186,89 @@ const UserSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", UserSchema);
 export default User;
+
+
+
+
+
+
+/******************** adminlogin.jsx
+
+
+
+/* eslint-disable react/no-unescaped-entities */
+import { useState } from "react";
+import "../../css/adminlogin.css";
+
+export const AdminLogin = () => {
+    // State to toggle between login and sign-up forms
+    const [isSignUp, setIsSignUp] = useState(false);
+
+    // Function to toggle form
+    const toggleForm = () => {
+        setIsSignUp(!isSignUp);
+    };
+
+    return (
+        <div className="admin-body-container">
+            <div className="admin-nav-container">
+                <h1>Admin Panel</h1>
+            </div>
+
+            <div className="admin-login-container">
+                <h1>{isSignUp ? "Sign Up" : "Login"}</h1>
+                <form className="admin-login-form">
+                    <input
+                        className="admin-input"
+                        type="text"
+                        name="username"
+                        autoComplete="off"
+                        placeholder={isSignUp ? "Enter New Username" : "Username"}
+                    />
+                    <input
+                        className="admin-input"
+                        type={isSignUp ? "email" : "password"}
+                        name="password"
+                        autoComplete="off"
+                        placeholder={isSignUp ? "Email" : "Password"}
+                    />
+
+                    {isSignUp && (
+                        <input
+                            className="admin-input"
+                            type="password"
+                            name="password"
+                            autoComplete="off"
+                            placeholder="Confirm Password"
+                        />
+                    )}
+
+                    <button type="submit" className="admin-submit-btn">
+                        {isSignUp ? "Sign Up" : "Login"}
+                    </button>
+
+                    {!isSignUp && (
+                        <>
+                            <p><a className="admin-forgot-password" href="#">Forgot Password?</a></p>
+                            <p>
+                                Don't have an account?{" "}
+                                <a className="admin-signup-link" href="#" onClick={toggleForm}>
+                                    Sign Up
+                                </a>
+                            </p>
+                        </>
+                    )}
+
+                    {isSignUp && (
+                        <p>
+                            Already have an account?{" "}
+                            <a className="admin-login-link" href="#" onClick={toggleForm}>
+                                Login
+                            </a>
+                        </p>
+                    )}
+                </form>
+            </div>
+        </div>
+    );
+};

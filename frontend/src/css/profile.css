@@ -1,87 +1,84 @@
 /* Profile.css */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .navbar {
-    /* Style your navbar here */
-    margin-bottom: 20px;
-  }
-  
-  .profile-header {
-    margin-bottom: 30px;
-  }
-  
-  .profile-header h1 {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .profile-header hr {
-    margin: 10px 0;
-    border: 0;
-    border-top: 1px solid #ddd;
-  }
-  
-  button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  table {
-    width: 100%;
-    border-spacing: 0 10px;
-  }
-  
-  td {
-    padding: 10px;
-    vertical-align: top;
-  }
-  
-  td b {
-    font-weight: bold;
-    color: #333;
-  }
-  
-  input[type="text"],
-  input[type="email"],
-  input[type="number"] {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 8px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  input:focus {
-    border-color: #007bff;
-    outline: none;
-  }
-  
-  .edit-mode {
-    display: block;
-  }
-  
-  .view-mode {
-    display: none;
-  }
-  
-  .alert {
-    color: #dc3545;
-    font-size: 1.25rem;
-    font-weight: bold;
-  }
-  
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.navbar {
+  /* Style your navbar here */
+  margin-bottom: 20px;
+}
+
+.profile-header {
+  margin-bottom: 30px;
+}
+
+.profile-header h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.profile-header hr {
+  margin: 10px 0;
+  border: 0;
+  border-top: 1px solid #ddd;
+}
+
+.edit-btn-profile {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.edit-btn-profile:hover {
+  background-color: #0056b3;
+}
+
+.profile-table {
+  width: 100%;
+  border-spacing: 0 10px;
+}
+
+.profile-td {
+  padding: 10px;
+  vertical-align: top;
+}
+
+.profile-td .profile-b {
+  font-weight: bold;
+  color: #333;
+}
+
+.profile-input {
+  border: 1px solid #ffb4b4;
+  border-radius: 5px;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.profile-input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.edit-mode {
+  display: block;
+}
+
+.view-mode {
+  display: none;
+}
+
+.alert {
+  color: #dc3545;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
