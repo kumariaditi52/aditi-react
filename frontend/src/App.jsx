@@ -6,6 +6,7 @@ import BuyPage from "./pages/BuyPage.jsx";
 import Profile from "./pages/Profile.jsx";
 import AdminLogin from "./pages/admin/AdminLogin.jsx";
 import AdminDashBoard from "./pages/admin/AdminDashboard.jsx";
+// import AdminRoutes from "./AdminRoutes.jsx";
 
 function App() {
   return (
@@ -19,10 +20,11 @@ function App() {
 
 
         {/* admin routes starts here */}
+        {/* <Route path="/admin/*" element={<AdminRoutes />} /> */}
         <Route path="/*admin" element={<AdminLogin />} />
         <Route path="/adminDashboard" element={<AdminDashBoard />} />
-      </Routes>
-    </Router>
+      </Routes >
+    </Router >
 
   )
 }

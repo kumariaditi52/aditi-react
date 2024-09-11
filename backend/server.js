@@ -15,7 +15,8 @@ import quantityChangethroughButton from "./src/routes/quantityChangethroughButto
 import userProfileRoutes from "./src/routes/userProfileRoutes.js";
 
 import adminSignRoutes from "./src/routes/adminRoutes/adminSignRoutes.js";
-import adminLoginRoutes from "./src/routes/adminRoutes/adminLoginRoutes.js"
+import adminLoginRoutes from "./src/routes/adminRoutes/adminLoginRoutes.js";
+import adminAuthRoutes from "./src/routes/adminRoutes/adminAuthRoutes.js";
 
 const app = express(); // initializing
 const PORT = process.env.PORT || 3000;
@@ -43,6 +44,7 @@ app.use("/api", userProfileRoutes);
 //admin routes
 app.use("/api", adminSignRoutes);
 app.use("/api", adminLoginRoutes);
+app.use("/api", adminAuthRoutes);
 
 app.listen(PORT, () => {
     console.log(`App is listening on http://localhost:${PORT}`);

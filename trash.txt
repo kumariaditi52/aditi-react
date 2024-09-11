@@ -272,3 +272,113 @@ export const AdminLogin = () => {
         </div>
     );
 };
+
+
+
+
+
+
+
+
+
+/* admin_dashboard.css */
+
+/* Container for the entire dashboard */
+.dashboard-body-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-nav-container {
+    height: 60px;
+    width: 100%;
+    background-color: #677787;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    font-weight: 400;
+    cursor: none;
+}
+
+.sidebar {
+    height: 100%;
+    width: 300px;
+    background-color: #2f4050;
+}
+
+.sidebar-list {
+    height: auto;
+    padding: 0;
+    width: 100%;
+}
+
+.sidebar-list .sidebar-row {
+    height: 60px;
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    color: grey;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+.sidebar-row:hover {
+    cursor: pointer;
+    background-color: #293846;
+    color: white;
+}
+
+#active {
+    background-color: #293846;
+    color: white;
+}
+
+.sidebar-row #sidebar-icon {
+    flex: 30%;
+    display: grid;
+    place-items: center;
+}
+
+.sidebar-row #sidebar-title {
+    flex: 70%;
+}
+
+.dashboard-main-container {
+    display: flex;
+    flex-grow: 1; /* Take remaining space below the nav */
+    width: 100%;
+}
+
+
+/* Main content area */
+.dashboard-container {
+    flex-grow: 1; /* Take the remaining space next to the sidebar */
+    background-color: #f4f4f4;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Styling for the cards */
+.card {
+    width: 300px;
+    height: 200px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

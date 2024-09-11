@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { useState } from "react";
 import "../../css/adminlogin.css";
 import { Admin_loader } from "../../components/admin_loader";
@@ -32,9 +31,12 @@ const AdminLogin = () => {
                 const response = await axios.post("/api/adminlogin", { usernameid, password });
                 if (response.data.message === "login success") {
                     toast.success("Login successful");
+
+                    // Store the access token in localStorage
+                    localStorage.setItem('adminToken', response.data.adminToken);
                     setTimeout(() => {
                         navigate("/adminDashboard"); // Navigate to dashboard after successful login
-                    }, 2000);
+                    }, 1000);
                 } else {
                     toast.error("Invalid username or password");
                 }

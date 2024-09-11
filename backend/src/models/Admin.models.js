@@ -11,6 +11,9 @@ const adminSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    refreshToken: {
+        type: String,
+    }
 })
 
 const Admin = mongoose.model("Admin", adminSchema);
