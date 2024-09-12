@@ -382,3 +382,24 @@ export const AdminLogin = () => {
     justify-content: center;
     align-items: center;
 }
+
+
+
+
+{isAuthenticated ? (
+                <div className="dashboard-main-container">
+                    <Sidebar />
+                    <div className="dashboard-container">
+                        <div className="card">
+                            <CodeIcon />
+                        </div>
+                        <div className="card">
+                            <SourceIcon />
+                        </div>
+                        <div className="card">Card 3</div>
+                        <div className="card">Card 4</div>
+                    </div>
+                </div>
+            ) : (
+                <Admin_loader />
+            )}

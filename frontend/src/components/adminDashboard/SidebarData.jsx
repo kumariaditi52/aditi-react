@@ -5,6 +5,9 @@ import DvrIcon from '@mui/icons-material/Dvr';
 import Diversity2Icon from '@mui/icons-material/Diversity2';
 import LocalConvenienceStoreIcon from '@mui/icons-material/LocalConvenienceStore';
 import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+
+
 
 export const SidebarData = [
     {
@@ -13,7 +16,7 @@ export const SidebarData = [
         link: "/adminDashboard"
     },
     {
-        title: "Orders",
+        title: "Manage Sellers",
         icon: <DvrIcon />,
         link: "/home"
     },
@@ -35,6 +38,12 @@ export const SidebarData = [
     {
         title: "Products Avail",
         icon: <ProductionQuantityLimitsIcon />,
+        link: "/productAvail"
+    },
+    {
+        title: "Log Out",
+        icon: <ExitToAppIcon />,
         link: "/home"
     },
+
 ]
