@@ -403,3 +403,238 @@ export const AdminLogin = () => {
             ) : (
                 <Admin_loader />
             )}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    ************** admindashboard.jsx *************************//
+
+
+
+import "../../css/admin_dashboard.css";
+import Sidebar from "../../components/adminDashboard/Sidebar";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import axios from "axios";
+import { Admin_loader } from "../../components/admin_loader";
+import { Product_avail } from "../../components/admin-components/Product_avail";
+import { ManageSellers } from "../../components/admin-components/ManageSellers";
+import { Mailbox } from "../../components/admin-components/Mailbox";
+import { OurTeam } from "../../components/admin-components/OurTeam";
+import { PackageStations } from "../../components/admin-components/PackageStations";
+import { Logout } from "../../components/admin-components/Logout";
+
+const AdminDashboard = () => {
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [currentSection, setCurrentSection] = useState('/*admin'); // Default section
+
+    useEffect(() => {
+        const token = localStorage.getItem("adminToken");
+
+        if (!token) {
+            // Redirect to login if token is missing
+            toast.error("Admin doesn't exist");
+            setTimeout(() => {
+                window.location.href = "/*admin";
+            }, 1000);
+        } else {
+            // Verify the token with backend
+            axios.post("/api/adminAuth", {}, {
+                headers: {
+                    Authorization: `Bearer ${token}`, // Include JWT token in the request headers
+                },
+            })
+                .then((response) => {
+                    if (response.data.isValid) {
+                        setIsAuthenticated(true); // Allow access to the dashboard
+                    } else {
+                        // Redirect if token is invalid
+                        toast.error("Invalid token");
+                        setTimeout(() => {
+                            window.location.href = "/*admin";
+                        }, 1000);
+                    }
+                })
+                .catch((error) => {
+                    // Handle token verification error
+                    console.error("Token verification error:", error);
+                    toast.error("Session expired, please log in again");
+                    setTimeout(() => {
+                        window.location.href = "/*admin";
+                    }, 1000);
+                });
+        }
+    }, []);
+
+    const handleSectionChange = (section) => {
+        setCurrentSection(section);
+    };
+
+    // Render component based on current section
+    const renderComponent = () => {
+        switch (currentSection) {
+            case 'home':
+                return <AdminDashboard />;
+            case 'manageSellers':
+                return <ManageSellers />;
+            case 'mailbox':
+                return <Mailbox />;
+            case 'ourTeam':
+                return <OurTeam />;
+            case 'packageStations':
+                return <PackageStations />;
+            case 'productAvail':
+                return <Product_avail />;
+            case 'logout':
+                return <Logout />;
+            default:
+                return <AdminDashboard />;
+        }
+    };
+    
+
+
+    // Render the dashboard content if authenticated, otherwise show loader
+    return (
+        <div className="dashboard-body-container">
+            <div className="dashboard-nav-container">
+                Admin Dashboard
+            </div>
+
+            {/* Conditionally render content based on authentication status */}
+            {isAuthenticated ? (
+                <div className="dashboard-main-container">
+                    <Sidebar onSectionChange={handleSectionChange} /> {/* Pass handleSectionChange to Sidebar */}
+                    <div className="dashboard-container">
+                        {renderComponent()} {/* Call renderComponent to display the right component */}
+                    </div>
+                </div>
+            ) : (
+                <Admin_loader /> // Show loader while authentication is being verified
+            )}
+        </div>
+    )
+};
+
+export default AdminDashboard;
+
+
+/* Container for the entire dashboard */
+.dashboard-body-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-nav-container {
+    height: 60px;
+    width: 100%;
+    background-color: #677787;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    font-weight: 400;
+    cursor: none;
+}
+
+.dashboard-main-container {
+    display: flex;
+    flex-grow: 1;
+    /* Take remaining space below the nav */
+    width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 300px;
+    background-color: #2f4050;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-list .sidebar-row {
+    height: 60px;
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    color: grey;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+.sidebar-row:hover {
+    cursor: pointer;
+    background-color: #293846;
+    color: white;
+}
+
+#active {
+    background-color: #293846;
+    color: white;
+}
+
+.sidebar-row #sidebar-icon {
+    flex: 30%;
+    display: grid;
+    place-items: center;
+}
+
+.sidebar-row #sidebar-title {
+    flex: 70%;
+}
+
+/* Main content area */
+.dashboard-container {
+    flex-grow: 1;
+    /* Take the remaining space next to the sidebar */
+    background-color: #f4f4f4;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Styling for the cards */
+.card {
+    width: 300px;
+    height: 200px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

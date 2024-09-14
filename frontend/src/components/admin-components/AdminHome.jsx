@@ -1,7 +1,10 @@
-// import React from 'react'
-
+import "../../css/admin-home.css";
 export const AdminHome = () => {
   return (
-    <h1>AdminHome</h1>
+    <>
+    <div className="admin-home-conatainer">
+        <h1>Admin Home</h1>
+    </div>
+    </>
   )
 }

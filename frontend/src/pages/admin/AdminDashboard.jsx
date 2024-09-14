@@ -1,95 +1,58 @@
+import ButtonGroup from "../../components/adminDashboard/ButtonGroup";
 import "../../css/admin_dashboard.css";
-import Sidebar from "../../components/adminDashboard/Sidebar";
-// import CodeIcon from '@mui/icons-material/Code';
-// import SourceIcon from '@mui/icons-material/Source';
-import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
-import axios from "axios";
-import { Admin_loader } from "../../components/admin_loader";
 import { AdminHome } from "../../components/admin-components/AdminHome";
 import { Product_avail } from "../../components/admin-components/Product_avail";
-
-const AdminDashboard = () => {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [currentSection, setCurrentSection] = useState('home'); // Default section
-
-    useEffect(() => {
-        const token = localStorage.getItem("adminToken");
-
-        if (!token) {
-            // Redirect to login if token is missing
-            toast.error("Admin doesn't exist");
-            setTimeout(() => {
-                window.location.href = "/*admin";
-            }, 1000);
-        } else {
-            // Verify the token with backend
-            axios.post("/api/adminAuth", {}, {
-                headers: {
-                    Authorization: `Bearer ${token}`, // Include JWT token in the request headers
-                },
-            })
-                .then((response) => {
-                    if (response.data.isValid) {
-                        setIsAuthenticated(true); // Allow access to the dashboard
-                    } else {
-                        // Redirect if token is invalid
-                        toast.error("Invalid token");
-                        setTimeout(() => {
-                            window.location.href = "/*admin";
-                        }, 1000);
-                    }
-                })
-                .catch((error) => {
-                    // Handle token verification error
-                    console.error("Token verification error:", error);
-                    toast.error("Session expired, please log in again");
-                    setTimeout(() => {
-                        window.location.href = "/*admin";
-                    }, 1000);
-                });
-        }
-    }, []);
-    const handleSectionChange = (section) => {
-        setCurrentSection(section);
-        window.location.pathname = section; // Or use a routing library to change the route
-    };
+import { ManageSellers } from "../../components/admin-components/ManageSellers";
+import { Mailbox } from "../../components/admin-components/Mailbox";
+import { OurTeam } from "../../components/admin-components/OurTeam";
+import { PackageStations } from "../../components/admin-components/PackageStations";
+import { Logout } from "../../components/admin-components/Logout";
+import { useState } from "react";
 
 
+import HomeIcon from '@mui/icons-material/Home';
+import InventoryIcon from '@mui/icons-material/Inventory';
+import PeopleIcon from '@mui/icons-material/People';
+import GroupIcon from '@mui/icons-material/Group';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import MailIcon from '@mui/icons-material/Mail';
+import LogoutIcon from '@mui/icons-material/Logout';
 
-    const renderContent = () => {
-        switch (currentSection) {
-            case 'home':
-                return <AdminHome />; // Replace with actual content
-            case 'productAvail':
-                return <Product_avail />; // Replace with actual content
-            default:
-                return <div>Home Content</div>; // Default content
-        }
-    };
+const buttons = [
+    "Home", "Product_avail", "Manage Sellers", "Our Team", "Package Stations", "Mailbox", "Log Out",
+];
+const icons = [
+    <HomeIcon />, <InventoryIcon />, <PeopleIcon />, <GroupIcon />,
+    <LocalShippingIcon />, <MailIcon />, <LogoutIcon />,
+];
 
+const RenderComponent = ({ index }) => {
+    switch (index) {
+        case 0: return <AdminHome />;
+        case 1: return <Product_avail />;
+        case 2: return <ManageSellers />;
+        case 3: return <OurTeam />;
+        case 4: return <PackageStations />;
+        case 5: return <Mailbox />;
+        case 6: return <Logout />;
+    }
+}
 
-    // Render the dashboard content if authenticated, otherwise show loader
+function AdminDashboard() {
+    const [isSelected, setIsSelected] = useState(0);
     return (
         <div className="dashboard-body-container">
             <div className="dashboard-nav-container">
                 Admin Dashboard
             </div>
-
-            {/* Conditionally render content based on authentication status */}
-            {isAuthenticated ? (
-                <div className="dashboard-main-container">
-                    <Sidebar onSectionChange={handleSectionChange} />
-                    <div className="dashboard-container">
-                        {renderContent()}
-                    </div>
+            <div className="dashboard-main-container">
+                <div className="sidebar">
+                    <ButtonGroup buttons={buttons} icons={icons} isSelected={isSelected} setIsSelected={setIsSelected} />
                 </div>
-            ) : (
-                <Admin_loader /> // Show loader while authentication is being verified
-            )}
-
+                <RenderComponent index={isSelected} />
+            </div>
         </div>
-    );
-};
+    )
+}
 
-export default AdminDashboard;
+export default AdminDashboard

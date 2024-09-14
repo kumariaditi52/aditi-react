@@ -6,7 +6,7 @@ import BuyPage from "./pages/BuyPage.jsx";
 import Profile from "./pages/Profile.jsx";
 import AdminLogin from "./pages/admin/AdminLogin.jsx";
 import AdminDashBoard from "./pages/admin/AdminDashboard.jsx";
-import { Product_avail } from "./components/admin-components/Product_avail.jsx";
+// import { Product_avail } from "./components/admin-components/Product_avail.jsx";
 // import AdminRoutes from "./AdminRoutes.jsx";
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
         {/* <Route path="/admin/*" element={<AdminRoutes />} /> */}
         <Route path="/*admin" element={<AdminLogin />} />
         <Route path="/adminDashboard" element={<AdminDashBoard />} />
-        <Route path="/productAvail" element={<Product_avail />} />
+        {/* <Route path="/productAvail" element={<Product_avail />} /> */}
       </Routes >
     </Router >
 

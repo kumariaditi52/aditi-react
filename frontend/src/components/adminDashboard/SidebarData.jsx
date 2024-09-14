@@ -13,37 +13,36 @@ export const SidebarData = [
     {
         title: "Home",
         icon: <HomeIcon />,
-        link: "/adminDashboard"
+        link: "/adminDashboard" // Home page route
     },
     {
         title: "Manage Sellers",
         icon: <DvrIcon />,
-        link: "/home"
+        link: "/manageSellers" // Unique route for Manage Sellers
     },
     {
         title: "Mailbox",
         icon: <AttachEmailIcon />,
-        link: "/home"
+        link: "/mailbox" // Unique route for Mailbox
     },
     {
         title: "Our Team",
         icon: <Diversity2Icon />,
-        link: "/home"
+        link: "/ourTeam" // Unique route for Our Team
     },
     {
         title: "Package Stations",
         icon: <LocalConvenienceStoreIcon />,
-        link: "/home"
+        link: "/packageStations" // Unique route for Package Stations
     },
     {
         title: "Products Avail",
         icon: <ProductionQuantityLimitsIcon />,
-        link: "/productAvail"
+        link: "/productAvail" // Route for Products Avail
     },
     {
         title: "Log Out",
         icon: <ExitToAppIcon />,
-        link: "/home"
+        link: "/logout" // Potential route for log out or implement logout logic here
     },
-
-]
+];
