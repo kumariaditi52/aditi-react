@@ -7,7 +7,7 @@ import { Mailbox } from "../../components/admin-components/Mailbox";
 import { OurTeam } from "../../components/admin-components/OurTeam";
 import { PackageStations } from "../../components/admin-components/PackageStations";
 import { Logout } from "../../components/admin-components/Logout";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 import HomeIcon from '@mui/icons-material/Home';
@@ -39,7 +39,12 @@ const RenderComponent = ({ index }) => {
 }
 
 function AdminDashboard() {
-    const [isSelected, setIsSelected] = useState(0);
+    const [isSelected, setIsSelected] = useState(
+        parseInt(localStorage.getItem("isSelected")) || 0
+    );
+    useEffect(() => {
+        localStorage.setItem("isSelected", isSelected);
+    }, [isSelected]);
     return (
         <div className="dashboard-body-container">
             <div className="dashboard-nav-container">

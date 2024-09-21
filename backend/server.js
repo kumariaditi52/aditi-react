@@ -1,5 +1,8 @@
 import express from 'express';
 import cors from 'cors';
+import dotenv from 'dotenv';
+dotenv.config();
+import path from 'path';
 
 // importing db
 import connectDb from './src/connectDB/db.js';
@@ -17,6 +20,7 @@ import userProfileRoutes from "./src/routes/userProfileRoutes.js";
 import adminSignRoutes from "./src/routes/adminRoutes/adminSignRoutes.js";
 import adminLoginRoutes from "./src/routes/adminRoutes/adminLoginRoutes.js";
 import adminAuthRoutes from "./src/routes/adminRoutes/adminAuthRoutes.js";
+import addFruitRoutes from "./src/routes/adminRoutes/addFruitRoutes.js";
 
 const app = express(); // initializing
 const PORT = process.env.PORT || 3000;
@@ -27,6 +31,11 @@ connectDb();
 //middlewares
 app.use(cors());
 app.use(express.json());
+
+// Serve static files from uploads (for accessing images)
+// To serve static files from the uploads folder
+const uploadDir = path.join(process.cwd(), 'src', 'uploads');
+app.use('/uploads', express.static(uploadDir));
 
 app.use(fruitsRoutes);
 app.use(cartRoutes); // to save the cart from user
@@ -45,6 +54,7 @@ app.use("/api", userProfileRoutes);
 app.use("/api", adminSignRoutes);
 app.use("/api", adminLoginRoutes);
 app.use("/api", adminAuthRoutes);
+app.use("/api", addFruitRoutes);
 
 app.listen(PORT, () => {
     console.log(`App is listening on http://localhost:${PORT}`);
