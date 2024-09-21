@@ -2,7 +2,7 @@ import ButtonGroup from "../../components/adminDashboard/ButtonGroup";
 import "../../css/admin_dashboard.css";
 import { AdminHome } from "../../components/admin-components/AdminHome";
 import { Product_avail } from "../../components/admin-components/Product_avail";
-import { ManageSellers } from "../../components/admin-components/ManageSellers";
+import { Update_Products } from "../../components/admin-components/Update_Products";
 import { Mailbox } from "../../components/admin-components/Mailbox";
 import { OurTeam } from "../../components/admin-components/OurTeam";
 import { PackageStations } from "../../components/admin-components/PackageStations";
@@ -19,7 +19,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 const buttons = [
-    "Home", "Product_avail", "Manage Sellers", "Our Team", "Package Stations", "Mailbox", "Log Out",
+    "Home", "Product_avail", "Update_Products", "Our Team", "Package Stations", "Mailbox", "Log Out",
 ];
 const icons = [
     <HomeIcon />, <InventoryIcon />, <PeopleIcon />, <GroupIcon />,
@@ -30,7 +30,7 @@ const RenderComponent = ({ index }) => {
     switch (index) {
         case 0: return <AdminHome />;
         case 1: return <Product_avail />;
-        case 2: return <ManageSellers />;
+        case 2: return <Update_Products />;
         case 3: return <OurTeam />;
         case 4: return <PackageStations />;
         case 5: return <Mailbox />;
