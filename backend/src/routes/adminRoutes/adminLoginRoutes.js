@@ -7,20 +7,14 @@ dotenv.config();
 
 const router = express.Router();
 
-// const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
 const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET;
 
-// const generateAccessToken = (admin) => {
-//     // return jwt.sign({ id: admin._id }, ACCESS_TOKEN_SECRET, { expiresIn: "15m" })
-//     return jwt.sign({ id: admin._id }, ACCESS_TOKEN_SECRET, { expiresIn: "15m" })
-// }
 const generateRefreshToken = (admin) => {
     return jwt.sign({ id: admin._id }, REFRESH_TOKEN_SECRET)
 }
 
 router.post("/adminlogin", async (req, res) => {
     const { usernameid, password } = req.body;
-    // await console.log(usernameid, password)
     try {
         const admin = await Admin.findOne({ username_id: usernameid });
         if (!admin) return res.status(400).json({ message: "admin doesn't exist" });

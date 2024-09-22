@@ -56,7 +56,16 @@
 }
 
 .fruit-card:hover {
-    /* transform: scale(1.05); */
+    border: 1px solid #ff0505;
+    border-radius: 8px;
+    padding: 16px;
+    width: 200px;
+    max-width: 200px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    transition: transform 0.2s ease;
+    position: relative;
 }
 
 

@@ -2,10 +2,13 @@ import { useState, useEffect } from "react";
 import "../css/carousel.css";
 
 const images = [
-    "https://images.pexels.com/photos/1120575/pexels-photo-1120575.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "https://images.pexels.com/photos/1105166/pexels-photo-1105166.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "https://images.pexels.com/photos/635705/pexels-photo-635705.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "https://images.pexels.com/photos/235294/pexels-photo-235294.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    // "/carousel-photos/pexels-fotios-photos-1161547.jpg",
+    "/carousel_photos/pexels-janetrangdoan-1092730.jpg",
+    "/carousel_photos/pexels-janetrangdoan-1132047.jpg",
+    "/carousel_photos/pexels-lovefoodart-1437598.jpg",
+    "/carousel_photos/pexels-lum3n-44775-1028599.jpg",
+    "/carousel_photos/pexels-mali-142520.jpg",
+    "/carousel_photos/pexels-pixabay-65256.jpg",
 ];
 
 function Carousel() {
@@ -21,7 +24,7 @@ function Carousel() {
     useEffect(() => {
         const autoSlide = setInterval(() => {
             nextSlide();
-        }, 1000); // Slide every 1 second
+        }, 1500); // Slide every 1 second
 
         // Cleanup interval on component unmount
         return () => clearInterval(autoSlide);

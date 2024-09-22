@@ -1,22 +1,22 @@
 .carousel-container {
     position: relative;
-    width: 100%; /* Full width of the container */
+    width: 100%; /* Adjust as needed */
     overflow: hidden; /* Hide overflow for smooth transitions */
-    height: 400px; /* Fixed height for the carousel */
+    height: 400px; /* Set a fixed height for your carousel */
 }
 
 .carousel-image {
     display: flex;
-    transition: transform 0.5s ease; /* Smooth transition for slide change */
+    transition: transform 0.5s ease-in-out; /* Smooth transition for slide change */
     width: 100%; /* Ensure the container takes full width */
-    height: 100%; /* Match the container height */
 }
 
 .carousel-image img {
-    width: 100%; /* Make images responsive to the container width */
-    height: 100%; /* Fixed height */
-    object-fit: cover; /* Maintain aspect ratio while filling the container */
+    max-width: 100%;
+    width: 100%; /* Make images responsive */
+    height: 100%; /* Set fixed height or auto for aspect ratio */
     flex-shrink: 0; /* Prevent shrinking */
+    object-fit: cover; /* Cover the container while keeping aspect ratio */
 }
 
 /* Arrow styles */
@@ -26,20 +26,12 @@
     transform: translateY(-50%);
     cursor: pointer;
     z-index: 1; /* Ensure arrows are above images */
-    background-color: rgba(255, 255, 255, 0.7); /* Light background for visibility */
-    border-radius: 50%; /* Rounded background for arrows */
-    padding: 10px; /* Padding for touch targets */
-    transition: background-color 0.3s; /* Smooth background change on hover */
-}
-
-.left-arrow:hover, .right-arrow:hover {
-    background-color: rgba(255, 255, 255, 1); /* Change on hover */
 }
 
 .left-arrow {
-    left: 10px; /* Position left arrow */
+    left: 10px; /* Adjust as needed */
 }
 
 .right-arrow {
-    right: 10px; /* Position right arrow */
+    right: 10px; /* Adjust as needed */
 }

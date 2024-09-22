@@ -6,9 +6,9 @@ import { Update_Products } from "../../components/admin-components/Update_Produc
 import { Mailbox } from "../../components/admin-components/Mailbox";
 import { OurTeam } from "../../components/admin-components/OurTeam";
 import { PackageStations } from "../../components/admin-components/PackageStations";
-import { Logout } from "../../components/admin-components/Logout";
 import { useEffect, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
 
 import HomeIcon from '@mui/icons-material/Home';
 import InventoryIcon from '@mui/icons-material/Inventory';
@@ -23,7 +23,7 @@ const buttons = [
 ];
 const icons = [
     <HomeIcon />, <InventoryIcon />, <PeopleIcon />, <GroupIcon />,
-    <LocalShippingIcon />, <MailIcon />, <LogoutIcon />,
+    <LocalShippingIcon />, <MailIcon />, <LogoutIcon />
 ];
 
 const RenderComponent = ({ index }) => {
@@ -34,17 +34,50 @@ const RenderComponent = ({ index }) => {
         case 3: return <OurTeam />;
         case 4: return <PackageStations />;
         case 5: return <Mailbox />;
-        case 6: return <Logout />;
+        default: return null; // No component for "Logout"
     }
 }
 
 function AdminDashboard() {
+    const [isAuthenticated, setIsAuthenticated] = useState(false); // Authentication state
     const [isSelected, setIsSelected] = useState(
         parseInt(localStorage.getItem("isSelected")) || 0
     );
+    const navigate = useNavigate();
+
+    // Check authentication on component mount
     useEffect(() => {
-        localStorage.setItem("isSelected", isSelected);
-    }, [isSelected]);
+        const token = localStorage.getItem('adminToken');
+        if (!token) {
+            // If no token, redirect to login
+            navigate('/*admin');
+        } else {
+            // Set isAuthenticated to true if token exists
+            setIsAuthenticated(true);
+        }
+    }, [navigate]);
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            localStorage.setItem("isSelected", isSelected);
+        }
+    }, [isSelected, isAuthenticated]);
+
+    // Handle Logout function
+    const handleLogout = () => {
+        localStorage.removeItem('adminToken'); // Clear the token
+        // const token = Cookies.get('adminToken'); // Retrieves the token from cookies
+        Cookies.remove('adminToken'); // Removes the token from cookies
+        setIsAuthenticated(false); // Set authentication to false
+        setIsSelected(0); // Reset the selected button
+        navigate('/*admin'); // Redirect to login page
+    }
+
+    if (!isAuthenticated) {
+        // If not authenticated, don't render the dashboard
+        return null;
+    }
+
     return (
         <div className="dashboard-body-container">
             <div className="dashboard-nav-container">
@@ -52,7 +85,18 @@ function AdminDashboard() {
             </div>
             <div className="dashboard-main-container">
                 <div className="sidebar">
-                    <ButtonGroup buttons={buttons} icons={icons} isSelected={isSelected} setIsSelected={setIsSelected} />
+                    <ButtonGroup
+                        buttons={buttons}
+                        icons={icons}
+                        isSelected={isSelected}
+                        setIsSelected={(index) => {
+                            if (index === 6) { // Logout button index
+                                handleLogout();
+                            } else {
+                                setIsSelected(index);
+                            }
+                        }}
+                    />
                 </div>
                 <RenderComponent index={isSelected} />
             </div>
@@ -60,4 +104,4 @@ function AdminDashboard() {
     )
 }
 
-export default AdminDashboard
+export default AdminDashboard;

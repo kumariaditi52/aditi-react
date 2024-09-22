@@ -4,6 +4,8 @@ import { Admin_loader } from "../../components/admin_loader";
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
+
 
 const AdminLogin = () => {
 
@@ -34,6 +36,7 @@ const AdminLogin = () => {
 
                     // Store the access token in localStorage
                     localStorage.setItem('adminToken', response.data.adminToken);
+                    Cookies.set('adminToken', response.data.adminToken, { expires: 1 }); // Expires in 1 days
                     setTimeout(() => {
                         navigate("/adminDashboard"); // Navigate to dashboard after successful login
                     }, 1000);

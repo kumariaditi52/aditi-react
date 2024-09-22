@@ -24,7 +24,6 @@ function App() {
         {/* <Route path="/admin/*" element={<AdminRoutes />} /> */}
         <Route path="/*admin" element={<AdminLogin />} />
         <Route path="/adminDashboard" element={<AdminDashBoard />} />
-        {/* <Route path="/productAvail" element={<Product_avail />} /> */}
       </Routes >
     </Router >
 
