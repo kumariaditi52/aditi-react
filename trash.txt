@@ -638,3 +638,114 @@ export default AdminDashboard;
     justify-content: center;
     align-items: center;
 }
+
+
+
+
+
+
+
+
+/* General container for the page */
+.update-procuts-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background for contrast */
+}
+
+/* Search bar and button */
+.update-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px; /* Space below the nav */
+}
+
+.search-bar-container {
+    display: flex;
+    width: 50%; /* Adjust width as needed */
+    gap: 10px;
+    box-sizing: border-box;
+}
+
+.search-bar-update-product {
+    flex-grow: 1; /* Make the input take remaining space */
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search-bar-update-product:focus {
+    border-color: #007bff; /* Highlight on focus */
+}
+
+.search-button-update-product {
+    border-radius: 10px;
+    padding: 10px 15px;
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-button-update-product:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Scrollable container for results */
+.update-body {
+    width: 80%; /* Width for the results section */
+    max-height: 400px; /* Set a max height for the results section */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #ddd; /* Add a border */
+    border-radius: 8px; /* Round corners */
+    background-color: white; /* Background color for results */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse; /* Remove gaps between cells */
+    font-family: Arial, sans-serif;
+}
+
+.results-table th,
+.results-table td {
+    padding: 12px;
+    border: 1px solid #ddd; /* Light border for table cells */
+}
+
+.results-table th {
+    background-color: #f4f4f4; /* Light background for headers */
+    font-weight: bold;
+}
+
+.results-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Zebra striping for even rows */
+}
+
+.results-table tr:hover {
+    background-color: #f1f1f1; /* Highlight row on hover */
+}
+
+/* Style for the image */
+.fruit-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover; /* Ensure the image fits within the bounds */
+}
+
+/* Message when no results are found */
+.no-results-message {
+    color: red;
+    font-size: 18px;
+    margin-top: 20px;
+    text-align: center; /* Center the no results message */
+}

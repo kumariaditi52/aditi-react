@@ -3,8 +3,7 @@ import express from "express";
 import multer from "multer";
 import fs from "fs";
 import path from "path";
-import { fileURLToPath } from "url"; // To work with file paths in ES modules
-import { log } from "console";
+import { fileURLToPath } from "url"; // For handling file paths in ES modules
 
 const router = express.Router();
 
@@ -12,37 +11,39 @@ const router = express.Router();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Ensure 'uploads' directory exists or create it
-// Use absolute path for the uploads folder
+// Define the uploads directory path
 const uploadDir = path.join(process.cwd(), 'src', 'uploads');
+
+// Ensure 'uploads' directory exists or create it
 if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir, { recursive: true });
 }
 
+// Set up multer storage
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'src/uploads/'); // Save files to the 'uploads/' directory
+        cb(null, uploadDir); // Save files to the 'src/uploads/' directory
     },
     filename: (req, file, cb) => {
         cb(null, Date.now() + '-' + file.originalname); // Use timestamp for unique filenames
     }
 });
 
+// Initialize multer with the defined storage
 const upload = multer({ storage });
 
 // POST route to handle adding a fruit with a file upload
 router.post('/add-fruits', upload.single('photo'), async (req, res) => {
     try {
-        // console.log('File:', req.headers.file);  // Log to check if file is being received
-        // console.log('Body:', req.body);  // Log to check the body data
-
         const { name, price, quantity, nutritions } = req.body;
-        const photo = req.file ? req.file.path : null;
+        const photo = req.file ? req.file.path.replace(/\\/g, '/') : null; // Normalize path for MongoDB
 
+        // Validate required fields
         if (!name || !price || !quantity || !nutritions || !photo) {
             return res.status(400).json({ message: "Please provide all required fields" });
         }
 
+        // Create a new fruit entry
         const newFruit = new Fruits({
             name,
             price,
@@ -51,6 +52,7 @@ router.post('/add-fruits', upload.single('photo'), async (req, res) => {
             photo
         });
 
+        // Save the fruit to the database
         await newFruit.save();
         res.status(201).json({ message: "You have successfully added a new fruit" });
     } catch (error) {
