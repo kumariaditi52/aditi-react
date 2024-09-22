@@ -2,13 +2,14 @@ import "../../css/update_products.css";
 import { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; // Import the CSS for toast
+import 'react-toastify/dist/ReactToastify.css';
+import { MdOutlineRefresh } from "react-icons/md";
+import { MdOutlineYoutubeSearchedFor } from "react-icons/md";
 
 export const Update_Products = () => {
     const [search, setSearch] = useState("");
     const [results, setResults] = useState([]);
 
-    // Handle search functionality
     const handleSearch = async () => {
         const token = localStorage.getItem("adminToken");
         try {
@@ -25,11 +26,10 @@ export const Update_Products = () => {
         }
     };
 
-    // Handle quantity change in the input field
     const handleQuantityChange = (index, value) => {
         const updatedResults = [...results];
-        updatedResults[index].quantity = value; // Update quantity in the results array
-        setResults(updatedResults); // Update state with the modified results array
+        updatedResults[index].quantity = value;
+        setResults(updatedResults);
     };
 
     // Handle update product quantity
@@ -47,12 +47,15 @@ export const Update_Products = () => {
             toast.error("Failed to update product");
         }
     };
+    const refreshPage = () => {
+        window.location.reload();
+    }
 
     return (
         <>
             <div className="update-products-container">
                 <div className="update-nav">
-                    <div className="search-bar-container">
+                    <div className="search-bar-container-update">
                         <input
                             type="text"
                             placeholder="Search Fruits by name ..."
@@ -60,71 +63,73 @@ export const Update_Products = () => {
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                         />
-                        <button className="search-button-update-product" onClick={handleSearch}>Search</button>
-                    </div>
-                    <hr />
+                        <button className="search-button-update-product" onClick={handleSearch}>Search <MdOutlineYoutubeSearchedFor size={11} /></button>
+                    <button className="search-button-update-product" onClick={refreshPage}>Refresh <MdOutlineRefresh size={10} /></button>
+
                 </div>
-                <div className="update-body">
-                    <div className="update-product-body">
-                        {results.length > 0 ? (
-                            <div className="table-container">
-                                <table className="results-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Fruit Name</th>
-                                            <th>Quantity</th>
-                                            <th>Price</th>
-                                            <th>Photo</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {results.map((fruit, index) => (
-                                            <tr key={index}>
-                                                <td>{fruit.name}</td>
-                                                <td>
-                                                    <input
-                                                        type="number"
-                                                        value={fruit.quantity}
-                                                        onChange={(e) => handleQuantityChange(index, e.target.value)}
+                <hr />
+            </div>
+            <div className="update-body">
+                <div className="update-product-body">
+                    {results.length > 0 ? (
+                        <div className="table-container">
+                            <table className="results-table">
+                                <thead>
+                                    <tr>
+                                        <th>Fruit Name</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Photo</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {results.map((fruit, index) => (
+                                        <tr key={index}>
+                                            <td>{fruit.name}</td>
+                                            <td>
+                                                <input
+                                                    type="number"
+                                                    value={fruit.quantity}
+                                                    onChange={(e) => handleQuantityChange(index, e.target.value)}
+                                                />
+                                            </td>
+                                            <td>₹{fruit.price}</td>
+                                            <td>
+                                                {fruit.photo ? (
+                                                    <img
+                                                        src={`${fruit.photo}`}
+                                                        alt={fruit.name}
+                                                        className="fruit-image"
                                                     />
-                                                </td>
-                                                <td>₹{fruit.price}</td>
-                                                <td>
-                                                    {fruit.photo ? (
-                                                        <img
-                                                            src={`${encodeURIComponent(fruit.photo.split('/').pop())}`}
-                                                            alt={fruit.name}
-                                                            className="fruit-image"
-                                                        />
-                                                    ) : (
-                                                        "No Image"
-                                                    )}
-                                                </td>
-                                                <td>
-                                                    <button
-                                                        className="update-button"
-                                                        onClick={() => handleUpdate(fruit._id, fruit.quantity)}
-                                                    >
-                                                        Update
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
+                                                ) : (
+                                                    "No Image"
+                                                )}
+                                            </td>
+                                            <td>
+                                                <button
+                                                    className="update-button"
+                                                    onClick={() => handleUpdate(fruit._id, fruit.quantity)}
+                                                >
+                                                    Update
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    ) : (
+                        search && (
+                            <div className="no-results-message">
+                                No results found for "{search}"
                             </div>
-                        ) : (
-                            search && (
-                                <div className="no-results-message">
-                                    No results found for {search}
-                                </div>
-                            )
-                        )}
-                    </div>
+                        )
+                    )}
                 </div>
             </div>
-            <ToastContainer /> {/* Add ToastContainer here */}
+        </div >
+            <ToastContainer /> {/* Add ToastContainer here */ }
         </>
     );
 };

@@ -76,7 +76,7 @@ export const Product_avail = () => {
           </label>
           <div className="image-preview">
             {image ? (
-              <img src={image} alt="Uploaded" style={{ width: '100px', height: '100px', marginLeft: '10px' }} />
+              <img src={image} alt="Uploaded" style={{ width: '150px', height: '150px', marginLeft: '10px' }} />
             ) : (
               <span>No photo uploaded</span>
             )}

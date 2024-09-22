@@ -4,6 +4,14 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 // import Profile from "../pages/Profile";
 import { refreshPage } from "./reloadPage";
+import { BsBagHeart } from "react-icons/bs";
+import { RiMapPinUserLine } from "react-icons/ri";
+import { AiOutlineLogout } from "react-icons/ai";
+import { RiUserHeartLine } from "react-icons/ri";
+import { MdFavoriteBorder } from "react-icons/md";
+import { MdOutlinePrivacyTip } from "react-icons/md";
+import { TbBorderStyle2 } from "react-icons/tb";
+
 
 
 function Navbar() {
@@ -111,13 +119,13 @@ function Navbar() {
                         {cartCount > -1 && (
                             <span className="add-value-cart">{cartCount}</span>
                         )}
-                        <i className="fa-solid fa-cart-shopping" color="#68736c"></i>
+                        <BsBagHeart />
                     </Link>
                 </div>
                 {!isCartPage && (
                     <div className="dropdown" ref={dropdownRef}>
                         <button onClick={toggleDropdown} className="dropdown-button">
-                            <i className="fa-regular fa-circle-user"></i>
+                            <RiMapPinUserLine />
                         </button>
                         <div className={`dropdown-menu ${isDropdown ? 'show' : ''}`}>
                             <ul>
@@ -125,27 +133,32 @@ function Navbar() {
                                     <>
                                         <li>
                                             <a onClick={handleLogout} className="dropdown-item">
-                                                <span className="dropdown-text">Log out</span> <i className="fa-solid fa-right-from-bracket"></i>
+                                                <span className="dropdown-text">Log out</span> <AiOutlineLogout />
                                             </a>
                                         </li>
                                         <li>
                                             <a className="dropdown-item" onClick={handleProfile}>
-                                                <span className="dropdown-text">Profile</span><i className="fa-regular fa-user"></i>
+                                                <span className="dropdown-text">Profile</span><RiUserHeartLine />
                                             </a>
                                         </li>
                                         <li>
                                             {/* <a className="dropdown-item"> */}
-                                                <Link to={'/cart'} className="dropdown-item"> <span className="dropdown-text">Cart</span><i className="fa-solid fa-cart-shopping"></i></Link>
+                                            <Link to={'/cart'} className="dropdown-item"> <span className="dropdown-text">Cart</span><BsBagHeart /></Link>
                                             {/* </a> */}
                                         </li>
                                         <li>
                                             <a className="dropdown-item">
-                                                <span className="dropdown-text">My Orders</span><i className="fa-solid fa-sort"></i>
+                                                <span className="dropdown-text">My Orders</span><TbBorderStyle2/>
                                             </a>
                                         </li>
                                         <li>
                                             <a className="dropdown-item">
-                                                <span className="dropdown-text">Privacy & policy</span><i className="fa-solid fa-shield-halved"></i>
+                                                <span className="dropdown-text">Wishlist</span><MdFavoriteBorder />
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a className="dropdown-item">
+                                                <span className="dropdown-text">Privacy & policy</span><MdOutlinePrivacyTip />
                                             </a>
                                         </li>
                                     </>

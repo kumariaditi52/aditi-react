@@ -1,55 +1,45 @@
 .carousel-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: relative;
-    max-width: 800px;
-    margin: 0 auto;
+    width: 100%; /* Full width of the container */
+    overflow: hidden; /* Hide overflow for smooth transitions */
+    height: 400px; /* Fixed height for the carousel */
 }
 
-.image {
-    width: 100%;
+.carousel-image {
     display: flex;
-    justify-content: center;
-    overflow: hidden; /* Ensures that images stay within the container during transition */
-    transition: transform 3.5s ease-in-out; /* Smooth sliding transition */
+    transition: transform 0.5s ease; /* Smooth transition for slide change */
+    width: 100%; /* Ensure the container takes full width */
+    height: 100%; /* Match the container height */
 }
 
-.image img {
-    width: 100%;
-    max-height: 400px;
-    border-radius: 8px;
-    object-fit: cover;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-    /* Smooth transition for both transform (slide effect) and opacity (fade effect) */
+.carousel-image img {
+    width: 100%; /* Make images responsive to the container width */
+    height: 100%; /* Fixed height */
+    object-fit: cover; /* Maintain aspect ratio while filling the container */
+    flex-shrink: 0; /* Prevent shrinking */
 }
 
-.left-arrow,
-.right-arrow {
+/* Arrow styles */
+.left-arrow, .right-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-    padding: 10px;
     cursor: pointer;
+    z-index: 1; /* Ensure arrows are above images */
+    background-color: rgba(255, 255, 255, 0.7); /* Light background for visibility */
+    border-radius: 50%; /* Rounded background for arrows */
+    padding: 10px; /* Padding for touch targets */
+    transition: background-color 0.3s; /* Smooth background change on hover */
+}
+
+.left-arrow:hover, .right-arrow:hover {
+    background-color: rgba(255, 255, 255, 1); /* Change on hover */
 }
 
 .left-arrow {
-    left: 10px;
+    left: 10px; /* Position left arrow */
 }
 
 .right-arrow {
-    right: 10px;
-}
-
-.size-6 {
-    width: 30px;
-    height: 30px;
-    color: white;
-}
-
-.left-arrow:hover,
-.right-arrow:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    right: 10px; /* Position right arrow */
 }

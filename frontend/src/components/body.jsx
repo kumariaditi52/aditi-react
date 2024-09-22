@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import handleAddToCart from "../utils/cartUtils.js";
 import { refreshPage } from "../components/reloadPage";
 import { useTypewriter } from "react-simple-typewriter";
+import { IoMdAdd } from "react-icons/io";
+import { MdFavoriteBorder } from "react-icons/md";
 
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
@@ -57,8 +59,8 @@ const Body = () => {
                             <p><b>Price:</b> ₹ {fruit.price}</p>
                             <p className="Nutrition"><b>Nutritions:</b> {fruit.nutritions}</p>
                             <div className="button-group">
-                                <button type="button" onClick={() => { addToCart(fruit); refreshPage(); }} className="add-to-cart-button">Add to Cart</button>
-                                <button type="button" className="buy-button">Buy</button>
+                                <button type="button" onClick={() => { addToCart(fruit); refreshPage(); }} className="add-to-cart-button">Add</button>
+                                <button type="button" className="wish-list-button"><MdFavoriteBorder /></button>
                             </div>
                         </div>
                     ))}

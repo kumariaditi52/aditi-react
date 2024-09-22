@@ -749,3 +749,48 @@ export default AdminDashboard;
     margin-top: 20px;
     text-align: center; /* Center the no results message */
 }
+
+
+
+
+
+
+
+
+
+
+.carousel-container {
+    position: relative;
+    width: 100%; /* Adjust as needed */
+    overflow: hidden; /* Hide overflow for smooth transitions */
+}
+
+.carousel-image {
+    display: flex;
+    transition: transform 0.5s ease; /* Smooth transition for slide change */
+    width: 100%; /* Ensure the container takes full width */
+}
+
+.carousel-image img {
+    width: 300px; /* Fixed width */
+    height: 200px; /* Fixed height */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* Arrow styles */
+.left-arrow, .right-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 1; /* Ensure arrows are above images */
+}
+
+.left-arrow {
+    left: 10px; /* Adjust as needed */
+}
+
+.right-arrow {
+    right: 10px; /* Adjust as needed */
+}

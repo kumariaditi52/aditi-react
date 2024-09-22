@@ -56,34 +56,33 @@
 }
 
 .fruit-card:hover {
-    transform: scale(1.05);
+    /* transform: scale(1.05); */
 }
 
 
 .button-group {
     display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 5px;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 0px;
 }
 
 .add-to-cart-button {
-    background-color: #F8BB5F;
+    background-color: #21201d;
     border: none;
-    border-radius: 4px;
+    border-radius: 13px;
     color: #fff;
-    font-size: 16px;
-    padding: 10px 20px;
+    font-size: px;
+    padding: 10px 15px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .add-to-cart-button:hover {
-    background-color: #f5a623;
-    transform: scale(1.05);
+    background-color: #494641;
 }
 
-.buy-button {
+.wish-list-button{
     background-color: lightblue;
     border: none;
     border-radius: 4px;
@@ -95,8 +94,7 @@
 }
 
 .buy-button:hover {
-    background-color: blue;
-    transform: scale(1.05);
+    background-color: rgb(88, 88, 101);
 }
 
 
