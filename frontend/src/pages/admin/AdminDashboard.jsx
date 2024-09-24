@@ -8,7 +8,8 @@ import { OurTeam } from "../../components/admin-components/OurTeam";
 import { PackageStations } from "../../components/admin-components/PackageStations";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Cookies from 'js-cookie';
+// import Cookies from 'js-cookie';
+import axios from "axios";
 
 import HomeIcon from '@mui/icons-material/Home';
 import InventoryIcon from '@mui/icons-material/Inventory';
@@ -65,13 +66,16 @@ function AdminDashboard() {
 
     // Handle Logout function
     const handleLogout = () => {
-        localStorage.removeItem('adminToken'); // Clear the token
-        // const token = Cookies.get('adminToken'); // Retrieves the token from cookies
-        Cookies.remove('adminToken'); // Removes the token from cookies
-        setIsAuthenticated(false); // Set authentication to false
-        setIsSelected(0); // Reset the selected button
-        navigate('/*admin'); // Redirect to login page
-    }
+        axios.post('/api/admin-logout')
+            .then(() => {
+                localStorage.removeItem('adminToken'); // Clear local storage
+                setIsAuthenticated(false); // Update state
+                setIsSelected(0); // Reset selection
+                navigate('/*admin'); // Redirect to login
+            })
+            .catch(err => console.error("Logout failed:", err));
+    };
+
 
     if (!isAuthenticated) {
         // If not authenticated, don't render the dashboard

@@ -25,6 +25,7 @@ import adminAuthRoutes from "./src/routes/adminRoutes/adminAuthRoutes.js";
 import addFruitRoutes from "./src/routes/adminRoutes/addFruitRoutes.js";
 import searchRoutes from "./src/routes/adminRoutes/searchRoutes.js";
 import updateFruitsRoutes from "./src/routes/adminRoutes/updateFruitsRoutes.js";
+import adminLogoutRoutes from "./src/routes/adminRoutes/adminLogoutRoutes.js";
 
 const app = express(); // initializing
 const PORT = process.env.PORT || 3000;
@@ -61,7 +62,8 @@ app.use("/api", adminLoginRoutes);
 app.use("/api", adminAuthRoutes);
 app.use("/api", addFruitRoutes);
 app.use("/api", searchRoutes);
-app.use("/api", updateFruitsRoutes)
+app.use("/api", updateFruitsRoutes);
+app.use("/api", adminLogoutRoutes);
 
 app.listen(PORT, () => {
     console.log(`App is listening on http://localhost:${PORT}`);

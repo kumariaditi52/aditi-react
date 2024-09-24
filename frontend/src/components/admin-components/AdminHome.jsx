@@ -6,7 +6,7 @@ export const AdminHome = () => {
       <div className="home-card-container">
         <div className="card">
           <div className="card-content">
-            <i className="icon">icon</i>
+            <i className="icon">Product</i>
             <p>Avail the required product</p>
           </div>
         </div>
