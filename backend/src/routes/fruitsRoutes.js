@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 import Fruits from "../models/Fruits.models.js";
 import express from "express";
 

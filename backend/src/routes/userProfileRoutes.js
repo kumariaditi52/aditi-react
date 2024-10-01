@@ -3,7 +3,6 @@ import User from "../models/User.models.js";
 
 const router = express.Router();
 
-// GET route to fetch user profile
 router.get("/userProfile", async (req, res) => {
     const userId = req.query.userId;
     try {
@@ -18,11 +17,10 @@ router.get("/userProfile", async (req, res) => {
     }
 });
 
-// PUT route to update user profile
+
 router.post('/updateUserProfile', async (req, res) => {
     try {
-        const { userId, ...updateData } = req.body; // Extract userId and the rest of the data
-
+        const { userId, ...updateData } = req.body;
         if (!userId) {
             return res.status(400).json({ error: 'User ID is required' });
         }
