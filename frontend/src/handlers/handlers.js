@@ -49,6 +49,24 @@ export const handleOtpSubmit = async (e, email, otp, setOtpSent, setLoading, nav
 };
 
 
-export const handleSignIn=async()=>{
-    console.log("sign in")
-}
+export const handleSignIn = async (e, email, password, setLoading, navigate) => {
+    e.preventDefault();
+    // try {
+    //     const res = await axios.post('/api/auth/login', { email, password });
+    //     const token = res.data.token;
+
+    //     // Store token in localStorage or cookies
+    //     localStorage.setItem('token', token);
+
+    //     // Navigate to the home page after login
+    //     navigate('/home');
+    // } catch (error) {
+    //     console.error("Error during sign-in:", error);
+    //     // Handle error (e.g., display an error message)
+    // } finally {
+    //     setLoading(false);
+    // }
+    console.log("Sign-In submitted:", { email, password });
+    setLoading(false);
+    // navigate("/home");
+};

@@ -51,7 +51,7 @@ const SignupForm = () => {
     return (
         <>
             <div className="Bar">{isSignUp ? 'Sign Up' : 'Sign In'}</div>
-            <div className="form-container">
+            <div className="form-container-sign-page">
 
                 <ToastContainer />
                 {loading ? (
@@ -59,22 +59,22 @@ const SignupForm = () => {
                 ) : (
                     isSignUp ? (
                         !otpSent ? (
-                            <form onSubmit={(e) => handleSubmit(e, email, username, setLoading, setOtpSent)}>
+                            <form className="form-sign" onSubmit={(e) => handleSubmit(e, email, username, setLoading, setOtpSent)}>
                                 <input className="input text" type="text" name="UserName" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Enter Your Name" required />
                                 <input className="input email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" required />
                                 <button className='signup-submit' type="submit">Sign Up</button>
                                 <p>Already have an account? <span onClick={() => setIsSignUp(false)} style={{ color: 'blue', cursor: 'pointer' }}>Sign In</span></p>
                             </form>
                         ) : (
-                            <form onSubmit={redirectToHomePage}>
+                            <form className="form-sign" onSubmit={redirectToHomePage}>
                                 <input className="input text" type="text" value={otp} onChange={(e) => setOtp(e.target.value)} placeholder="Enter OTP from email" maxLength={4} required />
                                 <button className='signup-submit' type="submit">Submit OTP</button>
                             </form>
                         )
                     ) : (
-                        <form onSubmit={handleSignInSubmit}>
+                        <form className="form-sign" onSubmit={handleSignInSubmit}>
                             <input className="input email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" required />
-                            <input className="input pass" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" required />
+                            <input className="input pass" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Your Name is your password" required />
                             <button className='signup-submit' type="submit">Sign In</button>
                             <p>Don't have an account? <span onClick={() => setIsSignUp(true)} style={{ color: 'blue', cursor: 'pointer' }}>Sign Up</span></p>
                         </form>
