@@ -8,8 +8,8 @@ dotenv.config();
 const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-        user: "free.usage.for.code@gmail.com",
-        pass: "gefktrfbtxxzetxo"
+        user: "free.usage.for.code@gmail.com", // aditi sing email
+        pass: "gefktrfbtxxzetxo" //p[ass]
     }
 })
 
@@ -29,7 +29,7 @@ export const signupHandler = async (req, res) => {
 
         // Send OTP via email
         const mailOptions = {
-            from: "free.usage.for.code@gmail.com",
+            from: "free.usage.for.code@gmail.com", //apka email
             to: email,
             subject: "Thanks for Signing up in Fruitzz...    Here is your OTP code",
             text: `Hey ${username} welcome to the Fruitzz... , Your OTP for verification code is ${otp}`
