@@ -49,7 +49,9 @@ export const handleOtpSubmit = async (e, email, otp, setOtpSent, setLoading, nav
 };
 
 
-export const handleSignIn = async (e, email, password, setLoading, navigate) => {
+export const handleSignIn = async (e, email, password, setLoading , navigate) => {
+
+    // export const handleSignIn = async (e, email, password, setLoading) => {
     e.preventDefault();
     // try {
     //     const res = await axios.post('/api/auth/login', { email, password });
@@ -66,7 +68,15 @@ export const handleSignIn = async (e, email, password, setLoading, navigate) => 
     // } finally {
     //     setLoading(false);
     // }
-    console.log("Sign-In submitted:", { email, password });
-    setLoading(false);
-    // navigate("/home");
+
+
+    // console.log("Sign-In submitted:", { email, password });
+    // setLoading(false);
+
+
+
+    //  navigate("/home");
+    navigate("/");
+
+
 };

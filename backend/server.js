@@ -41,17 +41,15 @@ app.use(express.json());
 const uploadDir = path.join(process.cwd(), 'src', 'uploads');
 app.use('/uploads', express.static(uploadDir));
 
-
-
 app.use(fruitsRoutes);
-app.use(cartRoutes); // to save the cart from user
+app.use(cartRoutes);
 
 app.post("/api/signup", signupHandler);
 app.post("/api/verify", verifyOtpHandler);
 
-app.use("/api", showcartRoutes); // show cart page
-app.use("/api", deleteItemRoutes); //  delete cart items from cart
-app.use("/api", showCartCountRoutes); //  show total count in cart
+app.use("/api", showcartRoutes);
+app.use("/api", deleteItemRoutes);
+app.use("/api", showCartCountRoutes);
 app.use("/api", quantityChangethroughButton);
 app.use("/api", userProfileRoutes);
 

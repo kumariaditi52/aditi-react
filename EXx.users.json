@@ -1,0 +1,51 @@
+[{
+  "_id": {
+    "$oid": "674f48fcca2a4773e07668d9"
+  },
+  "email": "aditikumari5281@gmail.com",
+  "username": "aditikumari",
+  "otp": null,
+  "isVerified": true,
+  "createdAt": {
+    "$date": "2024-12-03T18:07:56.841Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-03T18:08:34.564Z"
+  },
+  "__v": 0,
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkaXRpa3VtYXJpNTI4MUBnbWFpbC5jb20iLCJpc1ZlcmlmaWVkIjp0cnVlLCJ1c2VySWQiOiI2NzRmNDhmY2NhMmE0NzczZTA3NjY4ZDkiLCJpYXQiOjE3MzMyNDkzMTR9.EoLP1wXKxRlbVwUA17N9ZxVy2GR_Tits5GFuv4rPxPQ"
+},
+{
+  "_id": {
+    "$oid": "674f4aa49a8d46078bdb1821"
+  },
+  "email": "aditi765471@gmail.com",
+  "username": "siya singh",
+  "otp": null,
+  "isVerified": true,
+  "createdAt": {
+    "$date": "2024-12-03T18:15:00.669Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-03T18:15:38.502Z"
+  },
+  "__v": 0,
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkaXRpNzY1NDcxQGdtYWlsLmNvbSIsImlzVmVyaWZpZWQiOnRydWUsInVzZXJJZCI6IjY3NGY0YWE0OWE4ZDQ2MDc4YmRiMTgyMSIsImlhdCI6MTczMzI0OTczOH0.nx52_q9DFERhXK9LyTv_SoFG9aZ8wfgq0cm5cGjbzSs"
+},
+{
+  "_id": {
+    "$oid": "674f4edf58f32a94ab429bca"
+  },
+  "email": "sanjuother107@gmail.com",
+  "username": "sanju",
+  "otp": null,
+  "isVerified": true,
+  "createdAt": {
+    "$date": "2024-12-03T18:33:03.050Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-03T18:33:56.122Z"
+  },
+  "__v": 0,
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhbmp1b3RoZXIxMDdAZ21haWwuY29tIiwiaXNWZXJpZmllZCI6dHJ1ZSwidXNlcklkIjoiNjc0ZjRlZGY1OGYzMmE5NGFiNDI5YmNhIiwiaWF0IjoxNzMzMjUwODM2fQ.Wi9Vj6LaGgYxhpStxDkP8FHahP0_39Usz7C6oJDwdwM"
+}]
