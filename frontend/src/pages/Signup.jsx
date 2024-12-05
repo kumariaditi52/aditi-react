@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/signup.css";
 import Loader from "../components/loader.jsx";
-import { handleSubmit, handleOtpSubmit, handleSignIn } from "../handlers/handlers.js"; // Assuming you have a handleSignIn function
+import { handleSubmit, handleOtpSubmit, handleSignIn } from "../handlers/handlers.js";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,13 +11,19 @@ import 'react-toastify/dist/ReactToastify.css';
 const SignupForm = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState(''); // For Sign-In form
+    const [password, setPassword] = useState(''); 
+
+                  ///*** */
+    const [ConfirmPassword  , setConfirmPassword] = useState(''); 
+
+    
+    
 
     const [otp, setOtp] = useState('');
     const [otpSent, setOtpSent] = useState(false);
 
     const [loading, setLoading] = useState(false);
-    const [isSignUp, setIsSignUp] = useState(true); // State to toggle between Sign-Up and Sign-In forms
+    const [isSignUp, setIsSignUp] = useState(true); 
 
     const navigate = useNavigate();
 
@@ -62,6 +68,13 @@ const SignupForm = () => {
                             <form className="form-sign" onSubmit={(e) => handleSubmit(e, email, username, setLoading, setOtpSent)}>
                                 <input className="input text" type="text" name="UserName" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Enter Your Name" required />
                                 <input className="input email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" required />
+
+                                 {/* / ******** */ }
+                                <input className="input pass" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" required />
+                                  <input className="input pass" type="ConfirmPassword" value={ConfirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="Enter your confirmPassword" required />
+
+
+
                                 <button className='signup-submit' type="submit">Sign Up</button>
                                 <p>Already have an account? <span onClick={() => setIsSignUp(false)} style={{ color: 'blue', cursor: 'pointer' }}>Sign In</span></p>
                             </form>
@@ -74,7 +87,15 @@ const SignupForm = () => {
                     ) : (
                         <form className="form-sign" onSubmit={handleSignInSubmit}>
                             <input className="input email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" required />
-                            <input className="input pass" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Your Name is your password" required />
+                            <input className="input pass" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" required />
+
+                           
+                           
+                            {/* / ******** */ }
+
+
+                            <input className="input pass" type="ConfirmPassword" value={ConfirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="Enter your confirmPassword" required />
+
                             <button className='signup-submit' type="submit">Sign In</button>
                             <p>Don't have an account? <span onClick={() => setIsSignUp(true)} style={{ color: 'blue', cursor: 'pointer' }}>Sign Up</span></p>
                         </form>
@@ -86,3 +107,8 @@ const SignupForm = () => {
 }
 
 export default SignupForm;
+
+
+
+
+

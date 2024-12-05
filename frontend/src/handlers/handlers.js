@@ -35,9 +35,10 @@ export const handleOtpSubmit = async (e, email, otp, setOtpSent, setLoading, nav
             localStorage.setItem('authToken', token);
             setOtpSent(false);
             setTimeout(() => {
-                navigate("/"); // Ensure this route is correct
-            }, 1000); // Adjust timeout if necessary
+                navigate("/");
+            }, 1000); 
         }
+        
 
         toast.success(response.data.message || "User Verified Successfully");
     } catch (error) {

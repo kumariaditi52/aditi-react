@@ -82,3 +82,86 @@
   font-size: 1.25rem;
   font-weight: bold;
 }
+
+
+
+
+
+/* General styles for the table */
+.profile-table {
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  border-collapse: collapse;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Table row styling */
+.profile-table tr:nth-child(even) {
+  background-color: #f1f1f1;
+}
+
+.profile-table tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+/* Table data cell styling */
+.profile-td {
+  padding: 15px;
+  text-align: left;
+  vertical-align: middle;
+  font-size: 16px;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+/* Bold labels */
+.profile-td b,
+.profile-b {
+  font-weight: 600;
+  color: #555;
+}
+
+/* Input field styling */
+.profile-input {
+  width: calc(100% - 20px);
+  padding: 8px 10px;
+  font-size: 14px;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  outline: none;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.profile-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
+}
+
+/* Placeholder styling */
+.profile-input::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .profile-table {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .profile-td {
+    padding: 10px;
+  }
+
+  .profile-input {
+    width: calc(100% - 16px);
+    font-size: 13px;
+  }
+}
