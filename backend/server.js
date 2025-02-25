@@ -1,68 +1,45 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
-dotenv.config();
-import path from 'path';
+    const express = require('express');
+    const cors = require('cors');
+    const session = require('express-session');
+    const passport = require('./config/socialAuth');
+    const connectDB = require('./config/db');
+    const authRoutes = require('./routes/auth');
+    require('dotenv').config();
 
-const __dirname = path.resolve();
+    const app = express();
 
-// importing db
-import connectDb from './src/connectDB/db.js';
+    // Connect MongoDB
+    connectDB();
 
-//importing handlers
-import { signupHandler, verifyOtpHandler } from './src/handlers/handlers.js';
-import fruitsRoutes from "./src/routes/fruitsRoutes.js";
-import cartRoutes from "./src/routes/addcartRoutes.js";
-import showcartRoutes from "./src/routes/showcartRoutes.js";
-import deleteItemRoutes from "./src/routes/deleteItemRoutes.js";
-import showCartCountRoutes from "./src/routes/showCartCountRoutes.js";
-import quantityChangethroughButton from "./src/routes/quantityChangethroughButton.js";
-import userProfileRoutes from "./src/routes/userProfileRoutes.js";
+    // Middleware setup
+    app.use(cors({
+        origin: "http://localhost:3000",  // Frontend URL
+        methods: "GET,POST,PUT,DELETE",
+        credentials: true
+    }));
 
-import adminSignRoutes from "./src/routes/adminRoutes/adminSignRoutes.js";
-import adminLoginRoutes from "./src/routes/adminRoutes/adminLoginRoutes.js";
-import adminAuthRoutes from "./src/routes/adminRoutes/adminAuthRoutes.js";
-import addFruitRoutes from "./src/routes/adminRoutes/addFruitRoutes.js";
-import searchRoutes from "./src/routes/adminRoutes/searchRoutes.js";
-import updateFruitsRoutes from "./src/routes/adminRoutes/updateFruitsRoutes.js";
-import adminLogoutRoutes from "./src/routes/adminRoutes/adminLogoutRoutes.js";
+    app.use(express.json());
+    app.use(session({
+        secret: process.env.JWT_SECRET,
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            secure: process.env.NODE_ENV === 'production',
+            maxAge: 24 * 60 * 60 * 1000 // 24 hours
+        }
+    }));
 
-const app = express(); // initializing
-const PORT = process.env.PORT || 3000;
+    app.use(passport.initialize());
+    app.use(passport.session());
 
-//connect the database
-connectDb();
+    // Routes
+    app.use('/api/auth', authRoutes);
 
-//middlewares
-app.use(cors());
-app.use(express.json());
+    // Error handler
+    app.use((err, req, res, next) => {
+        console.error(err.stack);
+        res.status(500).json({ message: err.message || 'Something went wrong!' });
+    });
 
-// Serve static files from the uploads directory
-const uploadDir = path.join(process.cwd(), 'src', 'uploads');
-app.use('/uploads', express.static(uploadDir));
-
-app.use(fruitsRoutes);
-app.use(cartRoutes);
-
-app.post("/api/signup", signupHandler);
-app.post("/api/verify", verifyOtpHandler);
-
-app.use("/api", showcartRoutes);
-app.use("/api", deleteItemRoutes);
-app.use("/api", showCartCountRoutes);
-app.use("/api", quantityChangethroughButton);
-app.use("/api", userProfileRoutes);
-
-
-//admin routes
-app.use("/api", adminSignRoutes);
-app.use("/api", adminLoginRoutes);
-app.use("/api", adminAuthRoutes);
-app.use("/api", addFruitRoutes);
-app.use("/api", searchRoutes);
-app.use("/api", updateFruitsRoutes);
-app.use("/api", adminLogoutRoutes);
-
-app.listen(PORT, () => {
-    console.log(`App is listening on http://localhost:${PORT}`);
-});
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
