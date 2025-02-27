@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+
+
+import React, { Component, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Register from "./components/Register";
 import VerifyOTP from "./components/VerifyOTP";
@@ -10,7 +12,14 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "./components/page/Header";
 import ProtectedRoute from './components/ProtectedRoute';
-
+import JobPostings from './components/recruitment/JobPostings';
+import Candidates from './components/recruitment/Candidates';
+import Interviews from './components/recruitment/Interviews';
+import Recruitment from './components/recruitment/Recruitment';
+import RecruitmentPipeline from './components/recruitment/RecruitmentPipeline';
+import RecruitmentSurvey from './components/recruitment/RecruitmentSurvey';
+import SkillsZone from './components/recruitment/SkillsZone';
+import Stages from './components/recruitment/Stages';
 function App() {
     const [email, setEmail] = useState("");
 
@@ -20,22 +29,38 @@ function App() {
                 <Header />
                 <ToastContainer />
                 <Routes>
+                    {/* Public Routes */}
                     <Route path="/" element={<Register onNext={(email) => setEmail(email)} />} />
                     <Route path="/verify-otp" element={<VerifyOTP />} />
                     <Route path="/forgot-password" element={<ForgotPassword />} />
                     <Route path="/reset-password/:token" element={<ResetPassword />} />
                     <Route path="/login" element={<Login />} />
-                    <Route 
-                        path="/dashboard" 
-                        element={
-                            <ProtectedRoute>
-                                <Dashboard />
-                            </ProtectedRoute>
-                        } 
-                    />
+                    
+                    {/* Protected Routes - Only accessible after login */}
+                    <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+
+                    <Route path="/recruitment/*" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+                    <Route path="/recruitment" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+                    <Route path="/recruitment/job-postings" element={<ProtectedRoute><JobPostings /></ProtectedRoute>} />
+                    <Route path="/recruitment/candidates" element={<ProtectedRoute><Candidates /></ProtectedRoute>} />
+                    <Route path="/recruitment/interviews" element={<ProtectedRoute><Interviews /></ProtectedRoute>} />
+                    <Route path="/recruitment/Dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+                    <Route path="/recruitment/recruitment" element={<ProtectedRoute><Recruitment /></ProtectedRoute>} />
+                    <Route path="/recruitment/recruitmentPipeline" element={<ProtectedRoute><RecruitmentPipeline /></ProtectedRoute>} />
+                    <Route path="/recruitment/recruitmentSurvey" element={<ProtectedRoute><RecruitmentSurvey /></ProtectedRoute>} />
+                    <Route path="/recruitment/skillsZone" element={<ProtectedRoute><SkillsZone /></ProtectedRoute>} />
+                    <Route path="/recruitment/stages" element={<ProtectedRoute><Stages /></ProtectedRoute>} />
+
+
+
+                    <Route path="/onboarding/*" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+                    <Route path="/employee/*" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+                    <Route path="/attendance/*" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+                    <Route path="/leave/*" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+                    <Route path="/payroll/*" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+                    <Route path="/contract/*" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
                 </Routes>
             </div>
         </Router>
     );
-}
-export default App;
+}export default App;

@@ -22,18 +22,23 @@ import {
   Work as ContractIcon
 } from '@mui/icons-material';
 
+
+
 const menuItems = [
   {
     text: 'Dashboard',
     icon: <DashboardIcon />,
-    path: '/dashboard'
+    path: '/dashboard'  
   },
   {
     text: 'Recruitment',
     icon: <RecruitmentIcon />,
     path: '/recruitment',
-    subItems: ['Job Postings', 'Candidates', 'Interviews']
+    subItems: ['JobPostings', 'Candidates', 'Interviews ','Dashboard', 'RecruitmentPipeline', 'Recruitment Survey', 'Recruitment', 'Stages','Skill Zone']
   },
+
+  
+
   {
     text: 'Onboarding',
     icon: <OnboardingIcon />,
@@ -76,12 +81,24 @@ const Sidebar = ({ open, onClose }) => {
   const navigate = useNavigate();
   const [expandedItem, setExpandedItem] = useState(null);
 
+  // Keep only this version of handleItemClick
   const handleItemClick = (text, path) => {
+    // Navigate to the clicked path
     if (path) {
-      navigate(path);
-      onClose(); // Close sidebar after navigation
+        navigate(path);
+        // Close sidebar on mobile after navigation
+        onClose();
     }
+    // Toggle submenu expansion
     setExpandedItem(expandedItem === text ? null : text);
+  };
+
+  // Add the subitem click handler
+  const handleSubItemClick = (mainPath, subItem) => {
+    const subPath = subItem.toLowerCase().replace(' ', '-');
+    const fullPath = `${mainPath}/${subPath}`;
+    navigate(fullPath);
+    onClose();
   };
 
   return (
@@ -119,7 +136,12 @@ const Sidebar = ({ open, onClose }) => {
               <Collapse in={expandedItem === item.text} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
                   {item.subItems.map((subItem) => (
-                    <ListItem button key={subItem} sx={{ pl: 4 }}>
+                    <ListItem 
+                      button 
+                      key={subItem} 
+                      sx={{ pl: 4 }}
+                      onClick={() => handleSubItemClick(item.path, subItem)}
+                    >
                       <ListItemText primary={subItem} />
                     </ListItem>
                   ))}

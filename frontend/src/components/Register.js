@@ -63,21 +63,7 @@ const Register = ({ onNext }) => {
             boxShadow: '0 0 10px rgba(0,0,0,0.1)',
             backgroundColor: '#ffffff'
         }}>
-            <div style={{ textAlign: 'right', marginBottom: '20px' }}>
-                <button 
-                    onClick={handleLogout}
-                    style={{
-                        padding: '8px 16px',
-                        backgroundColor: '#dc3545',
-                        color: 'white',
-                        border: 'none',
-                        borderRadius: '4px',
-                        cursor: 'pointer'
-                    }}
-                >
-                    Logout
-                </button>
-            </div>
+   
 
             <h2 style={{
                 textAlign: 'center',

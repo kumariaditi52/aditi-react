@@ -100,24 +100,34 @@ const verifyOTP = async (req, res) => {
 };
 
 const loginUser = async (req, res) => {
-    const { email, password } = req.body;
     try {
-        let user = await User.findOne({ email });
-        if (!user) return res.status(400).json({ message: "User not found" });
+        const { email, password } = req.body;
+        const user = await User.findOne({ email });
+        
+        if (!user) {
+            return res.status(400).json({ message: "Invalid credentials" });
+        }
 
         const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
+        if (!isMatch) {
+            return res.status(400).json({ message: "Invalid credentials" });
+        }
 
-        if (!user.isVerified) return res.status(400).json({ message: "Verify your email first" });
-
-        const token = jwt.sign({ id: user._id }, "your_jwt_secret", { expiresIn: '1h' });
-
-        res.json({ token });
-    } catch (err) {
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+        
+        res.json({
+            token,
+            isVerified: user.isVerified,
+            user: {
+                id: user._id,
+                name: user.name,
+                email: user.email
+            }
+        });
+    } catch (error) {
         res.status(500).json({ message: "Server error" });
     }
 };
-
 const forgotPassword = async (req, res) => {
     const { email } = req.body;
     try {
