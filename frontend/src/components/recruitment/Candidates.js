@@ -43,7 +43,8 @@ const Candidates = () => {
       {/* Search Bar */}
       <input
         type="text"
-        placeholder="Search"
+
+        placeholder="Search here"
         style={{
           width: "100%",
           padding: "8px",
