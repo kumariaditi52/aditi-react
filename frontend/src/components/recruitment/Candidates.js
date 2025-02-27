@@ -1,20 +1,130 @@
-import React from 'react';
+import React from "react";
 
 const Candidates = () => {
+  const candidates = [
+    {
+      name: "Liam",
+      email: "ananda.s@pazl.info",
+      role: "Odoo Dev - (S/W Dept)",
+      status: "Canceled",
+      initials: "LI",
+      bgColor: "green",
+    },
+    {
+      name: "Noah Anderson",
+      email: "noah.anderson@horilla.com",
+      role: "Odoo Dev - (S/W Dept)",
+      status: "Converted",
+      initials: "NA",
+      bgColor: "lightblue",
+    },
+    {
+      name: "Lucas Rogers",
+      email: "lucas.rogers@horilla.com",
+      role: "Sales Man - (Sales Dept)",
+      status: "Not-Hired",
+      initials: "LR",
+      bgColor: "orange",
+    },
+    {
+      name: "Amrish Puri",
+      email: "fdtest.liugong@gmail.com",
+      role: "Training and Development Coordinator - (Hr Dept)",
+      status: "Converted",
+      initials: "AP",
+      bgColor: "gray",
+    },
+  ];
+
   return (
-    <div style={{ padding: '20px' }}>
-      <h2>Candidates</h2>
-      <div style={{ marginTop: '20px' }}>
-        {/* Add your candidates list content here */}
-        <h3>Applications</h3>
-        <ul>
-          <li>John Doe - Software Engineer</li>
-          <li>Jane Smith - Product Manager</li>
-          <li>Mike Johnson - UX Designer</li>
-        </ul>
+    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+      <h2 style={{ fontSize: "24px", fontWeight: "bold" }}>Candidates</h2>
+
+      {/* Search Bar */}
+      <input
+        type="text"
+        placeholder="Search"
+        style={{
+          width: "100%",
+          padding: "8px",
+          marginTop: "10px",
+          border: "1px solid #ccc",
+          borderRadius: "5px",
+        }}
+      />
+
+      {/* Candidates List */}
+      <div style={{ display: "flex", flexWrap: "wrap", marginTop: "20px" }}>
+        {candidates.map((candidate, index) => (
+          <div
+            key={index}
+            style={{
+              width: "300px",
+              padding: "15px",
+              margin: "10px",
+              borderRadius: "10px",
+              boxShadow: "0 0 5px rgba(0,0,0,0.2)",
+              borderLeft: `5px solid ${
+                candidate.status === "Converted"
+                  ? "green"
+                  : candidate.status === "Canceled"
+                  ? "red"
+                  : candidate.status === "Not-Hired"
+                  ? "gray"
+                  : "blue"
+              }`,
+              position: "relative",
+            }}
+          >
+            {/* Profile Circle */}
+            <div
+              style={{
+                width: "50px",
+                height: "50px",
+                backgroundColor: candidate.bgColor,
+                color: "white",
+                borderRadius: "50%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                fontSize: "18px",
+                fontWeight: "bold",
+                marginBottom: "10px",
+              }}
+            >
+              {candidate.initials}
+            </div>
+
+            <strong style={{ fontSize: "16px" }}>{candidate.name}</strong>
+            <p style={{ margin: "5px 0", fontSize: "14px", color: "#666" }}>
+              {candidate.email}
+            </p>
+            <p style={{ fontSize: "14px", color: "#999" }}>{candidate.role}</p>
+
+            {/* Status Badge */}
+            {candidate.status === "Converted" && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: "10px",
+                  right: "10px",
+                  backgroundColor: "green",
+                  color: "white",
+                  padding: "5px 10px",
+                  borderRadius: "5px",
+                  fontSize: "12px",
+                  fontWeight: "bold",
+                }}
+              >
+                Converted
+              </div>
+            )}
+          </div>
+        ))}
       </div>
     </div>
   );
 };
 
 export default Candidates;
+
