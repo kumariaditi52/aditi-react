@@ -48,7 +48,8 @@ const Recruitment = () => {
       </div>
 
       {/* Table */}
-      <div style={{ marginTop: "20px", border: "1px solid #ddd", borderRadius: "5px", overflow: "hidden" }}>
+
+      {/* <div style={{ marginTop: "20px", border: "1px solid #ddd", borderRadius: "5px", overflow: "hidden" }}>
         <table style={{ width: "100%", borderCollapse: "collapse" }}>
           <thead>
             <tr style={{ background: "#f3f3f3", textAlign: "left" }}>
@@ -87,7 +88,158 @@ const Recruitment = () => {
             ))}
           </tbody>
         </table>
-      </div>
+      </div> */}
+<div style={{ 
+  marginTop: "20px", 
+  border: "1px solid #e0e0e0", 
+  borderRadius: "12px", 
+  overflow: "hidden",
+  boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+}}>
+  <table style={{ 
+    width: "100%", 
+    borderCollapse: "collapse",
+    backgroundColor: "#ffffff"
+  }}>
+    <thead>
+      <tr style={{ 
+        background: "linear-gradient(to right, #f8f9fa, #e9ecef)", 
+        textAlign: "left",
+        borderBottom: "2px solid #dee2e6"
+      }}>
+        <th style={{ padding: "18px", fontSize: "16px", fontWeight: "700", color: "#495057" }}>Recruitment</th>
+        <th style={{ padding: "18px", fontSize: "16px", fontWeight: "700", color: "#495057" }}>Managers</th>
+        <th style={{ padding: "18px", fontSize: "16px", fontWeight: "700", color: "#495057" }}>Open Jobs</th>
+        <th style={{ padding: "18px", fontSize: "16px", fontWeight: "700", color: "#495057" }}>Vacancy</th>
+        <th style={{ padding: "18px", fontSize: "16px", fontWeight: "700", color: "#495057" }}>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {recruitments.map((item, index) => (
+        <tr key={item.id} style={{ 
+          background: index % 2 === 0 ? "#ffffff" : "#f8f9fa",
+          borderBottom: "1px solid #e9ecef",
+          transition: "all 0.3s ease",
+          ':hover': {
+            backgroundColor: "#f1f3f5",
+            boxShadow: "inset 0 0 8px rgba(0,0,0,0.05)"
+          }
+        }}>
+          <td style={{ 
+            padding: "18px", 
+            borderLeft: `5px solid ${item.status === "Open" ? "#40c057" : "#fa5252"}`,
+            fontWeight: "500",
+            color: "#212529"
+          }}>{item.role}</td>
+          <td style={{ 
+            padding: "18px", 
+            fontStyle: "italic",
+            color: "#495057"
+          }}>{item.managers} Managers</td>
+          <td style={{ 
+            padding: "18px", 
+            fontStyle: "italic",
+            color: "#495057"
+          }}>{item.jobs} Jobs</td>
+          <td style={{ 
+            padding: "18px",
+            fontWeight: "600",
+            color: "#212529"
+          }}>{item.vacancy}</td>
+          <td style={{ 
+            padding: "18px", 
+            display: "flex", 
+            gap: "18px",
+            alignItems: "center"
+          }}>
+            <button style={{ 
+              background: "#f8f9fa", 
+              border: "1px solid #dee2e6", 
+              cursor: "pointer", 
+              color: "#228be6",
+              padding: "10px",
+              borderRadius: "6px",
+              transition: "all 0.2s ease",
+              ':hover': {
+                transform: "scale(1.1)",
+                backgroundColor: "#e7f5ff",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.1)"
+              }
+            }}>
+              <FaShareAlt />
+            </button>
+            <button style={{ 
+              background: "#f8f9fa", 
+              border: "1px solid #dee2e6", 
+              cursor: "pointer", 
+              color: "#12b886",
+              padding: "10px",
+              borderRadius: "6px",
+              transition: "all 0.2s ease",
+              ':hover': {
+                transform: "scale(1.1)",
+                backgroundColor: "#e6fcf5",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.1)"
+              }
+            }}>
+              <FaEdit />
+            </button>
+            <button style={{ 
+              background: "#f8f9fa", 
+              border: "1px solid #dee2e6", 
+              cursor: "pointer", 
+              color: "#7950f2",
+              padding: "10px",
+              borderRadius: "6px",
+              transition: "all 0.2s ease",
+              ':hover': {
+                transform: "scale(1.1)",
+                backgroundColor: "#f3f0ff",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.1)"
+              }
+            }}>
+              <FaRegClone />
+            </button>
+            <button style={{ 
+              background: "#f8f9fa", 
+              border: "1px solid #dee2e6", 
+              cursor: "pointer", 
+              color: "#fd7e14",
+              padding: "10px",
+              borderRadius: "6px",
+              transition: "all 0.2s ease",
+              ':hover': {
+                transform: "scale(1.1)",
+                backgroundColor: "#fff4e6",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.1)"
+              }
+            }}>
+              <FaDownload />
+            </button>
+            <button style={{ 
+              background: "#f8f9fa", 
+              border: "1px solid #dee2e6", 
+              cursor: "pointer", 
+              color: "#fa5252",
+              padding: "10px",
+              borderRadius: "6px",
+              transition: "all 0.2s ease",
+              ':hover': {
+                transform: "scale(1.1)",
+                backgroundColor: "#fff5f5",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.1)"
+              }
+            }}>
+              <FaTrash />
+            </button>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+
     </div>
   );
 };

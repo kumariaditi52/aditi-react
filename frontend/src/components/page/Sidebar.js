@@ -194,7 +194,7 @@ const menuItems = [
   {
     text: 'Recruitment',
     icon: <RecruitmentIcon />,
-    path: '/recruitment',
+    path: '/recruitment/Dashboard',
     subItems: [
       {name: 'Dashboard', path: '/recruitment/Dashboard'},
       {name: 'Recruitment Pipeline', path: '/recruitment/RecruitmentPipeline'},
@@ -252,7 +252,7 @@ const Sidebar = ({ open, onClose }) => {
   const handleItemClick = (text, path) => {
     if (path) {
       navigate(path);
-      onClose();
+      // onClose();
     }
     setExpandedItem(expandedItem === text ? null : text);
   };
@@ -265,7 +265,7 @@ const Sidebar = ({ open, onClose }) => {
       const fullPath = `${mainPath}/${subPath}`;
       navigate(fullPath);
     }
-    onClose();
+    // onClose();
   };
 
   return (
